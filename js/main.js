@@ -18,7 +18,24 @@
   const counter = document.getElementById('gallery-counter');
   let activeProject = null, galleryIndex = 0, lastFocused = null, touchStartX = 0;
 
-  const coverMarkup = p => p.cover ? `<img loading="lazy" src="${asset(p.cover)}" alt="معاينة ${p.title}">` : `<div class="live-cover"><small>${p.type}</small><strong>${p.coverText || p.title}</strong></div>`;
+  const embeddedCover = p => `<div style="position:relative;width:100%;height:100%;overflow:hidden;background:#fff">
+      <iframe title="معاينة مصغرة: ${p.title}" src="${p.previewUrl}" loading="lazy" tabindex="-1" aria-hidden="true" referrerpolicy="no-referrer" style="width:125%;height:125%;border:0;pointer-events:none;transform:scale(.8);transform-origin:top right;background:#fff"></iframe>
+      <span style="position:absolute;right:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(16,42,43,.92);color:#fff;font-size:11px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.16)">معاينة فعلية</span>
+    </div>`;
+
+  const sanitizedCover = p => `<div style="height:100%;padding:22px;background:linear-gradient(145deg,#fff,#eef3ef);display:flex;flex-direction:column;justify-content:space-between;gap:16px;border:1px solid #dce4df">
+      <div><small style="color:#7d5b37;font-weight:800">${p.type}</small><h4 style="margin:7px 0 0;font-size:20px;line-height:1.35">${p.title}</h4></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:11px;color:#43514f"><span style="padding:8px;background:#fff;border-radius:10px">نبذة الجهة</span><span style="padding:8px;background:#fff;border-radius:10px">الهيكل التنظيمي</span><span style="padding:8px;background:#fff;border-radius:10px">المهام والأعمال</span><span style="padding:8px;background:#fff;border-radius:10px">الشواهد والأنشطة</span></div>
+      <b style="font-size:11px;color:#5f6e6c">معاينة منزوعة البيانات الشخصية</b>
+    </div>`;
+
+  const coverMarkup = p => {
+    if (p.embedCover && p.previewUrl) return embeddedCover(p);
+    if (p.sanitizedPreview) return sanitizedCover(p);
+    if (p.cover) return `<img loading="lazy" src="${asset(p.cover)}" alt="معاينة ${p.title}" onerror="this.parentElement.innerHTML='<div class=&quot;live-cover&quot;><small>${p.type}</small><strong>${p.coverText || p.title}</strong></div>'">`;
+    return `<div class="live-cover"><small>${p.type}</small><strong>${p.coverText || p.title}</strong></div>`;
+  };
+
   const cardMarkup = (p, featured=false) => `<article class="${featured?'featured-card':'work-card'}" data-project-id="${p.id}" tabindex="0" role="button" aria-label="عرض مشروع ${p.title}" ${featured?'':`data-categories="${p.categories.join(' ')}"`}><div class="${featured?'featured-media':'work-media'}">${coverMarkup(p)}</div><div class="${featured?'featured-copy':'work-copy'}"><span class="project-type">${p.type}</span><h3>${p.title}</h3><p>${p.description}</p></div></article>`;
 
   if (featuredGrid) featuredGrid.innerHTML = projects.filter(p=>p.featured).slice(0,6).map(p=>cardMarkup(p,true)).join('');
@@ -52,12 +69,13 @@
     tags.innerHTML=(p.tags||[]).map(t=>`<span>${t}</span>`).join('');
     actions.innerHTML=''; controls.hidden=true;
     if(p.gallery?.length){ renderGallery(); }
+    else if(p.previewHtml){ view.innerHTML=p.previewHtml; }
     else if(p.previewUrl){ view.innerHTML=`<iframe title="معاينة: ${p.title}" src="${p.previewUrl}" loading="lazy" referrerpolicy="no-referrer"></iframe>`; }
     else if(p.liveUrl){ view.innerHTML=`<iframe title="معاينة حية: ${p.title}" src="${p.liveUrl}" loading="lazy" referrerpolicy="no-referrer"></iframe>`; }
     else { view.innerHTML=`<div class="live-cover"><strong>${p.title}</strong><small>Preview</small></div>`; }
     if(p.liveUrl) actions.insertAdjacentHTML('beforeend',`<a class="primary-link" href="${p.liveUrl}" target="_blank" rel="noopener">فتح الموقع الحي</a>`);
     if(p.githubUrl) actions.insertAdjacentHTML('beforeend',`<a href="${p.githubUrl}" target="_blank" rel="noopener">GitHub</a>`);
-    if(p.sourceUrl) actions.insertAdjacentHTML('beforeend',`<a href="${p.sourceUrl}" target="_blank" rel="noopener">عرض الملف الأصلي</a>`);
+    if(p.sourceUrl && !p.hideSource) actions.insertAdjacentHTML('beforeend',`<a href="${p.sourceUrl}" target="_blank" rel="noopener">عرض الملف الأصلي</a>`);
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('modal-open'); panel.focus();
   }
   function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('modal-open'); view.innerHTML=''; activeProject=null; if(lastFocused?.focus) lastFocused.focus(); }
