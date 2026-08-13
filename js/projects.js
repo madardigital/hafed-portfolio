@@ -37,12 +37,13 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id:"munjiz",
-    title:"منجز — تطبيق ويب",
-    type:"Web Application",
+    title:"منجز — تطبيق ويب لإدارة التكليفات",
+    type:"Web Application / PWA",
     categories:["web"],
     featured:false,
-    description:"مشروع تطبيق ويب حديث منشور عبر GitHub، يضيف بعدًا تطبيقيًا إلى نماذج المواقع والمنصات الرقمية.",
-    tags:["Web App","TypeScript","PWA"],
+    description:"تطبيق ويب عربي موجّه للهاتف لتنظيم التكليفات والمهام، مع وضع محلي وإمكانات مزامنة سحابية عند تفعيلها.",
+    tags:["Web App","TypeScript","PWA","Mobile-first"],
+    liveUrl:"https://madardigital.github.io/munjiz/",
     githubUrl:"https://github.com/madardigital/munjiz",
     coverText:"منجز"
   },
@@ -59,6 +60,18 @@ window.PORTFOLIO_PROJECTS = [
     sourceUrl:"https://drive.google.com/file/d/1yyHwdmM3EnxS9k5huSQjuEl6evaDO37x/view"
   },
   {
+    id:"hajj-health-visual",
+    title:"حج صحي — عرض بصري للحملة",
+    type:"Campaign Presentation",
+    categories:["presentations","pr"],
+    featured:false,
+    description:"نسخة بصرية مكثفة من الحملة تعرض الإطار العام، تحليل الموقف، الجمهور، الأهداف والرسائل في صيغة مناسبة للعرض.",
+    tags:["Presentation","Campaign","Visual Communication","RTL"],
+    cover:"https://drive.google.com/thumbnail?id=1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv&sz=w1600",
+    previewUrl:"https://drive.google.com/file/d/1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv/preview",
+    sourceUrl:"https://drive.google.com/file/d/1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv/view"
+  },
+  {
     id:"media-indicators",
     title:"مؤشرات الأخبار الصحفية — منطقة مكة",
     type:"Media Analytics & Report",
@@ -71,28 +84,16 @@ window.PORTFOLIO_PROJECTS = [
     sourceUrl:"https://drive.google.com/file/d/1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z/view"
   },
   {
-    id:"training-needs",
-    title:"تحديد الاحتياجات التدريبية",
-    type:"Professional Presentation",
-    categories:["presentations"],
+    id:"festival-content",
+    title:"مهرجان الثقافات والشعوب — صناعة المحتوى الإعلامي",
+    type:"Content Strategy & Media Plan",
+    categories:["pr","reports"],
     featured:true,
-    description:"عرض تدريبي عربي موسع يبني رحلة تعليمية من تشخيص فجوة الأداء إلى جمع الأدلة وترتيب الاحتياجات وبناء الخطة، ضمن أكثر من مئة شريحة منظمة.",
-    tags:["Presentation","Training","RTL","Instructional Design"],
-    cover:"https://drive.google.com/thumbnail?id=1XfdTPhB_ETX0kOXcXjaQIJLAKUNSxIbE&sz=w1600",
-    previewUrl:"https://drive.google.com/file/d/1XfdTPhB_ETX0kOXcXjaQIJLAKUNSxIbE/preview",
-    sourceUrl:"https://docs.google.com/presentation/d/1XfdTPhB_ETX0kOXcXjaQIJLAKUNSxIbE/edit"
-  },
-  {
-    id:"cultural-identity-research",
-    title:"التواصل الاجتماعي والهوية الثقافية",
-    type:"Research Plan",
-    categories:["research"],
-    featured:false,
-    description:"خطة بحث إعلامية حول دور منصات التواصل الاجتماعي في تعزيز الهوية الثقافية لدى الشباب السعودي، تشمل المشكلة والأهمية والأهداف والأسئلة والإطار النظري والدراسات السابقة.",
-    tags:["Research","Social Media","Cultural Identity","Media Studies"],
-    cover:"https://drive.google.com/thumbnail?id=1l3N2JhvPQlUTekz2ELaS76MQv3YfEBppxGTXbvrMtTY&sz=w1600",
-    previewUrl:"https://docs.google.com/document/d/1l3N2JhvPQlUTekz2ELaS76MQv3YfEBppxGTXbvrMtTY/preview",
-    sourceUrl:"https://docs.google.com/document/d/1l3N2JhvPQlUTekz2ELaS76MQv3YfEBppxGTXbvrMtTY/edit"
+    description:"خطة محتوى رقمية تتضمن الأهداف والجمهور ومحاور المحتوى والمنصات وتقويم النشر وأفكار منشورات وتسويق الحدث رقميًا.",
+    tags:["Content Strategy","Social Media","Event Communication","Editorial Planning"],
+    cover:"https://drive.google.com/thumbnail?id=1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX&sz=w1600",
+    previewUrl:"https://drive.google.com/file/d/1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX/preview",
+    sourceUrl:"https://drive.google.com/file/d/1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX/view"
   },
   {
     id:"radiology-plan",
