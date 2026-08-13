@@ -52,6 +52,7 @@
     tags.innerHTML=(p.tags||[]).map(t=>`<span>${t}</span>`).join('');
     actions.innerHTML=''; controls.hidden=true;
     if(p.gallery?.length){ renderGallery(); }
+    else if(p.previewUrl){ view.innerHTML=`<iframe title="معاينة: ${p.title}" src="${p.previewUrl}" loading="lazy" referrerpolicy="no-referrer"></iframe>`; }
     else if(p.liveUrl){ view.innerHTML=`<iframe title="معاينة حية: ${p.title}" src="${p.liveUrl}" loading="lazy" referrerpolicy="no-referrer"></iframe>`; }
     else { view.innerHTML=`<div class="live-cover"><strong>${p.title}</strong><small>Preview</small></div>`; }
     if(p.liveUrl) actions.insertAdjacentHTML('beforeend',`<a class="primary-link" href="${p.liveUrl}" target="_blank" rel="noopener">فتح الموقع الحي</a>`);
@@ -66,6 +67,11 @@
   document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))return;if(e.key==='Escape')closeModal();if(activeProject?.gallery?.length&&e.key==='ArrowLeft'){galleryIndex++;renderGallery()}if(activeProject?.gallery?.length&&e.key==='ArrowRight'){galleryIndex--;renderGallery()}});
   view.addEventListener('touchstart',e=>touchStartX=e.changedTouches[0].screenX,{passive:true});
   view.addEventListener('touchend',e=>{if(!activeProject?.gallery?.length)return;const d=e.changedTouches[0].screenX-touchStartX;if(Math.abs(d)>55){galleryIndex += d<0?1:-1;renderGallery()}},{passive:true});
+
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    const f=btn.dataset.filter;
+    if(f!=='all' && !projects.some(p=>p.categories.includes(f))) btn.hidden=true;
+  });
 
   document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
