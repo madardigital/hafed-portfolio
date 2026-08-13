@@ -15,7 +15,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    @media(max-width:900px){.main-nav{position:absolute;top:76px;right:4vw;left:4vw;display:none;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}.main-nav.open{display:flex}.menu-toggle{display:block}.hero-grid,.two-col,.contact-card{grid-template-columns:1fr}.hero-showcase{min-height:430px}.expertise-grid{grid-template-columns:1fr}.featured-card,.featured-card:first-child,.featured-card:nth-child(4){grid-column:span 6}.work-grid{grid-template-columns:repeat(2,1fr)}.trust-grid{grid-template-columns:1fr}.modal-panel{padding:26px 18px}}
+    @media(max-width:620px){.hero h1{font-size:40px}.hero-showcase{min-height:350px}.hero-actions .button{width:100%}.section-pad{padding:64px 0}.featured-grid,.work-grid{grid-template-columns:1fr}.featured-card,.featured-card:first-child,.featured-card:nth-child(4){grid-column:1}.featured-media,.work-media,.featured-card:first-child .featured-media,.featured-card:nth-child(4) .featured-media{height:220px}.modal-panel{inset:1.5vh 8px}.footer-wrap{display:grid}}
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">الانتقال إلى المحتوى</a>
@@ -55,9 +60,9 @@
           </div>
         </div>
         <div class="hero-showcase reveal" aria-label="نماذج بصرية مختارة">
-          <button class="hero-tile tile-wide" data-open-project="nike-marketing" aria-label="فتح نموذج عرض Nike"><img data-asset="assets/previews/nike-cover.webp" alt="غلاف عرض تحليل المزيج التسويقي لشركة Nike"></button>
-          <button class="hero-tile" data-open-project="media-indicators" aria-label="فتح تقرير مؤشرات الأخبار"><img data-asset="assets/previews/media-cover.webp" alt="غلاف تقرير مؤشرات الأخبار الصحفية"></button>
-          <button class="hero-tile" data-open-project="digital-transformation-infographic" aria-label="فتح إنفوجرافيك التحول الرقمي"><img data-asset="assets/previews/infographic-digital.webp" alt="إنفوجرافيك عن التحول الرقمي"></button>
+          <button class="hero-tile tile-wide" data-open-project="training-needs" aria-label="فتح نموذج عرض تحديد الاحتياجات التدريبية"><img src="https://drive.google.com/thumbnail?id=1XfdTPhB_ETX0kOXcXjaQIJLAKUNSxIbE&sz=w1600" alt="معاينة عرض تحديد الاحتياجات التدريبية"></button>
+          <button class="hero-tile" data-open-project="media-indicators" aria-label="فتح تقرير مؤشرات الأخبار"><img src="https://drive.google.com/thumbnail?id=1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z&sz=w1200" alt="غلاف تقرير مؤشرات الأخبار الصحفية"></button>
+          <button class="hero-tile" data-open-project="hajj-health" aria-label="فتح حملة حج صحي"><img src="https://drive.google.com/thumbnail?id=1yyHwdmM3EnxS9k5huSQjuEl6evaDO37x&sz=w1200" alt="معاينة حملة حج صحي"></button>
         </div>
       </div>
     </section>
@@ -102,7 +107,7 @@
         <div class="section-heading reveal">
           <p class="section-kicker">03 — مختارات</p>
           <h2>أعمال رئيسية توضح اتساع النطاق.</h2>
-          <p>منصة رقمية، حملة، تقرير تحليلي، عرض، وإنفوجرافيك — دون حصر المعرض في تخصص واحد.</p>
+          <p>منصة رقمية، حملة، تقرير تحليلي، عرض، وتصميم بصري — دون حصر المعرض في تخصص واحد.</p>
         </div>
         <div class="featured-grid" id="featured-grid"></div>
       </div>
