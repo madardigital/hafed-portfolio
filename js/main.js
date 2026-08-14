@@ -1,5 +1,19 @@
 (() => {
   const projects = window.PORTFOLIO_PROJECTS || [];
+
+  projects.push({
+    id:"visual-design-archive",
+    title:"مختارات من العروض والإنفوجرافيك والبوسترات والمطويات",
+    type:"Visual Design Archive",
+    categories:["presentations","infographics","posters","brochures","achievement"],
+    featured:true,
+    description:"أرشيف بصري حقيقي يضم نماذج منتقاة من تصميم العروض العربية والإنجليزية، الإنفوجرافيك، البوسترات، المطويات، إلى جانب صفحات فعلية من ملف إنجاز بعد إزالة الجزء الذي يحمل بيانات الطالب.",
+    tags:["Presentation Design","Infographics","Posters","Brochures","Achievement Portfolio"],
+    cover:"https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w1600",
+    previewUrl:"https://drive.google.com/file/d/1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p/preview",
+    sourceUrl:"https://drive.google.com/file/d/1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p/view"
+  });
+
   const asset = path => (window.ASSETS && window.ASSETS[path]) || path;
 
   document.querySelectorAll('img[data-asset]').forEach(img=>{img.src=asset(img.dataset.asset);});
