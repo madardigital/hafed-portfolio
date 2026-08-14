@@ -1,7 +1,7 @@
 (() => {
   const sections = window.PORTFOLIO_SECTIONS || [];
   const projects = window.PORTFOLIO_PROJECTS || [];
-  const sprite = {url:"https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000",cols:4,rows:4};
+  const sprite = {url:"https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000",cols:4,rows:5};
   const root = document.getElementById('portfolio-sections');
   const modal = document.getElementById('project-modal');
   const panel = modal?.querySelector('.modal-panel');
