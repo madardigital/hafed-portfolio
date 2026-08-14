@@ -1,170 +1,79 @@
+window.PORTFOLIO_SECTIONS = [
+  {id:"presentations",title:"العروض التقديمية",subtitle:"نماذج عروض أكاديمية وتسويقية وإعلامية واستثمارية."},
+  {id:"media-editorial",title:"المحتوى الإعلامي والتحريري",subtitle:"أخبار، تقارير، مقالات، مقابلات، تحقيقات، تغطيات ومواد صحفية."},
+  {id:"content-writing",title:"كتابة المحتوى",subtitle:"نماذج تخطيط وصياغة المحتوى والرسائل ومحاور النشر."},
+  {id:"campaigns",title:"الخطط والحملات والتحليلات",subtitle:"خطط تسويقية، حملات إعلانية وتسويقية، علاقات عامة، تحليل ومؤشرات قياس واتصال رقمي."},
+  {id:"news-sites",title:"مواقع صحف إلكترونية",subtitle:"نماذج مواقع صحفية وإعلامية إلكترونية."},
+  {id:"stores",title:"مواقع إلكترونية لمتاجر",subtitle:"نماذج متاجر ومنصات تسويقية إلكترونية."},
+  {id:"print-newspapers",title:"صحف ورقية",subtitle:"نماذج تصميم وإخراج صحف مطبوعة."},
+  {id:"adobe-reports",title:"تقارير صحفية باستخدام Adobe Express",subtitle:"تقارير وصفحات صحفية تفاعلية منشأة باستخدام Adobe Express."},
+  {id:"achievements",title:"ملفات إنجاز التدريب",subtitle:"نماذج ملفات إنجاز منظمة مع حماية البيانات الشخصية."},
+  {id:"training-reports",title:"تقارير التدريب التعاوني والميداني",subtitle:"سيتم استكمال النماذج عند إضافة النسخ المخصصة للعرض.",keepWhenEmpty:true},
+  {id:"training-kits",title:"حقائب تدريبية وأدلة",subtitle:"سيتم استكمال النماذج عند إضافة الحقائب والأدلة المخصصة للعرض.",keepWhenEmpty:true},
+  {id:"client-projects",title:"مشاريع لعملاء",subtitle:"نماذج تقارير وخطط تطويرية ومخرجات تطبيقية."},
+  {id:"research",title:"البحوث",subtitle:"نماذج بحوث أكاديمية ومشروعات بحثية منظمة."},
+  {id:"ats-cv",title:"CV وفق نظام ATS",subtitle:"نماذج سِيَر ذاتية منظمة ومتوافقة مع أنظمة تتبع المتقدمين، مع إخفاء البيانات الشخصية في المعاينة."},
+  {id:"visual-design",title:"التصاميم المرئية",subtitle:"تصاميم إعلانية، فيديو، موشن جرافيك، فيديوهات بالذكاء الاصطناعي، إنفوجرافيك، بوسترات ومطويات."},
+  {id:"testimonials",title:"بعض ردود العملاء",subtitle:"لقطات مختارة من ردود العملاء بعد التسليم، مع إخفاء أي بيانات لا يلزم عرضها."}
+];
+
+const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
+const driveThumb = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
+
 window.PORTFOLIO_PROJECTS = [
-  {
-    id:"ai-portfolio",
-    title:"معرض صناعة المحتوى بالذكاء الاصطناعي",
-    type:"AI Visual Content",
-    categories:["ai","web"],
-    featured:true,
-    description:"معرض متخصص يوضح سير العمل من تطوير الفكرة وكتابة المحتوى والـPrompts إلى التوليد والتصميم والمونتاج.",
-    tags:["AI","Visual Content","Prompting","Video"],
-    liveUrl:"https://madardigital.github.io/hafed-ai-portfolio/",
-    githubUrl:"https://github.com/madardigital/hafed-ai-portfolio",
-    coverText:"AI Visual Content"
-  },
-  {
-    id:"lenora",
-    title:"Lenora Marketing Platform",
-    type:"Digital Marketing Platform",
-    categories:["web","pr"],
-    featured:true,
-    description:"منصة تسويقية إلكترونية لعلامة عطور وهدايا، تجمع تجربة عرض المنتجات مع المحتوى التسويقي وربط قنوات التواصل.",
-    tags:["Web","Digital Marketing","Content Strategy"],
-    liveUrl:"https://madardigital.github.io/lenora-marketing-platform/",
-    githubUrl:"https://github.com/madardigital/lenora-marketing-platform",
-    coverText:"Lenora Marketing Platform"
-  },
-  {
-    id:"arej",
-    title:"أريج — منصة تسويقية للعطور",
-    type:"Web & Marketing",
-    categories:["web","pr"],
-    featured:false,
-    description:"واجهة عربية تسويقية تعرض المنتجات وتربط تجربة الموقع باستراتيجية المحتوى ووسائل التواصل وقياس الأداء.",
-    tags:["Web","UX/UI","Content","Social Media"],
-    liveUrl:"https://madardigital.github.io/arej-platform/",
-    githubUrl:"https://github.com/madardigital/arej-platform",
-    coverText:"أريج"
-  },
-  {
-    id:"munjiz",
-    title:"منجز — تطبيق ويب لإدارة التكليفات",
-    type:"Web Application / PWA",
-    categories:["web"],
-    featured:false,
-    description:"تطبيق ويب عربي موجّه للهاتف لتنظيم التكليفات والمهام، مع وضع محلي وإمكانات مزامنة سحابية عند تفعيلها.",
-    tags:["Web App","TypeScript","PWA","Mobile-first"],
-    liveUrl:"https://madardigital.github.io/munjiz/",
-    githubUrl:"https://github.com/madardigital/munjiz",
-    coverText:"منجز"
-  },
-  {
-    id:"hajj-health",
-    title:"حملة حج صحي — تقرير وخطة اتصال وتوعية",
-    type:"PR Campaign / Report",
-    categories:["pr","reports"],
-    featured:true,
-    embedCover:true,
-    description:"تقرير حملة توعوية صحية يتضمن تحليل الموقف والجمهور، أهداف SMART، الرسائل، التكتيكات، الخطة الزمنية ومؤشرات التقييم.",
-    tags:["Report","PR Campaign","Audience Analysis","SMART Objectives","KPIs"],
-    previewUrl:"https://drive.google.com/file/d/1yyHwdmM3EnxS9k5huSQjuEl6evaDO37x/preview",
-    sourceUrl:"https://drive.google.com/file/d/1yyHwdmM3EnxS9k5huSQjuEl6evaDO37x/view"
-  },
-  {
-    id:"hajj-health-visual",
-    title:"حج صحي — عرض تقديمي بصري",
-    type:"Campaign Presentation",
-    categories:["presentations","pr"],
-    featured:true,
-    embedCover:true,
-    description:"عرض بصري للحملة يقدّم الإطار العام، تحليل الموقف، الجمهور، الأهداف والرسائل في صيغة شرائح قابلة للتصفح مباشرة.",
-    tags:["Presentation","Campaign","Visual Communication","RTL"],
-    previewUrl:"https://drive.google.com/file/d/1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv/preview",
-    sourceUrl:"https://drive.google.com/file/d/1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv/view"
-  },
-  {
-    id:"media-indicators",
-    title:"مؤشرات الأخبار الصحفية — منطقة مكة",
-    type:"Media Analytics, KPI Dashboard & Report",
-    categories:["media","reports","pr","infographics"],
-    featured:true,
-    embedCover:true,
-    description:"تقرير بصري يحول الرصد الصحفي إلى لوحة مؤشرات KPIs، توزيع جغرافي ونوعي، جداول ومصفوفات وخلاصة تحليلية؛ ويظهر أيضًا كنموذج لتصور البيانات والإنفوجرافيك التقريري.",
-    tags:["Media Monitoring","KPIs","Data Visualization","Infographic","PR"],
-    previewUrl:"https://drive.google.com/file/d/1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z/preview",
-    sourceUrl:"https://drive.google.com/file/d/1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z/view"
-  },
-  {
-    id:"festival-content",
-    title:"مهرجان الثقافات والشعوب — صناعة المحتوى الإعلامي",
-    type:"Content Strategy & Media Plan",
-    categories:["pr","reports"],
-    featured:false,
-    embedCover:true,
-    description:"خطة محتوى رقمية تتضمن الأهداف والجمهور ومحاور المحتوى والمنصات وتقويم النشر وأفكار منشورات وتسويق الحدث رقميًا.",
-    tags:["Content Strategy","Social Media","Event Communication","Editorial Planning"],
-    previewUrl:"https://drive.google.com/file/d/1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX/preview",
-    sourceUrl:"https://drive.google.com/file/d/1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX/view"
-  },
-  {
-    id:"radiology-plan",
-    title:"الخطة التطويرية المقترحة لقسم الأشعة",
-    type:"Analytical / Development Report",
-    categories:["reports"],
-    featured:false,
-    embedCover:true,
-    description:"نموذج تقرير تطويري يربط مشكلات التشغيل والإجراءات التصحيحية مع خدمات الأشعة وتعليمات الفحوصات ضمن بنية تحليلية وعملية.",
-    tags:["Report","Healthcare","Operational Improvement"],
-    previewUrl:"https://drive.google.com/file/d/17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg/preview",
-    sourceUrl:"https://drive.google.com/file/d/17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg/view"
-  },
-  {
-    id:"achievement-sample",
-    title:"ملف إنجاز تدريب ميداني — نموذج منزوعة بياناته",
-    type:"Achievement Portfolio",
-    categories:["achievement"],
-    featured:false,
-    sanitizedPreview:true,
-    hideSource:true,
-    description:"نموذج حقيقي لهيكلة ملف إنجاز تدريب ميداني. حُجبت منه أسماء الطلبة وبياناتهم، مع إبقاء بنية الملف ونوعية المخرجات التي توضح تنظيم الشواهد والمهام والأنشطة.",
-    tags:["Achievement File","Field Training","Documentation","Portfolio"],
-    previewHtml:`<div style="min-height:520px;background:#f7f5ef;padding:28px;color:#17302f;overflow:auto"><div style="max-width:760px;margin:auto;background:white;border:1px solid #dce3df;border-radius:22px;padding:28px;box-shadow:0 20px 60px rgba(16,42,43,.09)"><p style="color:#8a6239;font-weight:800;margin:0">معاينة منزوعة البيانات الشخصية</p><h3 style="font-size:30px;margin:8px 0 22px">ملف إنجاز التدريب الميداني</h3><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px"><div style="padding:16px;background:#eef4f1;border-radius:14px"><b>نبذة عن جهة التدريب</b><p>تعريف بالجهة، دورها المجتمعي وأهدافها.</p></div><div style="padding:16px;background:#eef4f1;border-radius:14px"><b>الهيكل التنظيمي</b><p>عرض هيكل القسم والارتباطات التنظيمية.</p></div><div style="padding:16px;background:#eef4f1;border-radius:14px"><b>مهام قسم الإعلام</b><p>الأخبار، التقارير، إدارة حسابات التواصل والتغطيات.</p></div><div style="padding:16px;background:#eef4f1;border-radius:14px"><b>الأعمال والشواهد</b><p>أنشطة، أخبار، ورش ومخرجات إعلامية موثقة.</p></div></div><hr style="border:0;border-top:1px solid #e0e5e1;margin:24px 0"><p style="margin:0;color:#64716f">لا تظهر في هذه المعاينة أسماء الطلبة أو الأرقام الجامعية أو أي بيانات حساسة.</p></div></div>`
-  },
-  {
-    id:"research-sample",
-    title:"بحث التحول الرقمي في الخدمات الطلابية — معاينة منزوعة البيانات",
-    type:"Academic Research",
-    categories:["research"],
-    featured:false,
-    sanitizedPreview:true,
-    hideSource:true,
-    description:"نموذج بحث أكاديمي منظم حول التحول الرقمي في قطاع الخدمات الطلابية، مع إخفاء بيانات الطالب وإبقاء بنية البحث ومحاوره العلمية.",
-    tags:["Research","Digital Transformation","Higher Education","Academic Writing"],
-    previewHtml:`<div style="min-height:520px;background:#f7f5ef;padding:28px;overflow:auto"><article style="max-width:760px;margin:auto;background:#fff;border-radius:20px;padding:30px;border:1px solid #dde3df"><small style="color:#8a6239;font-weight:800">ACADEMIC RESEARCH SAMPLE</small><h3 style="font-size:28px;line-height:1.45">التحول الرقمي في قطاع الخدمات الطلابية</h3><p>مشروع بحث وصفي يناقش أثر التحول الرقمي في الخدمات الطلابية والتحديات التقنية والتنظيمية والبشرية.</p><ol style="line-height:2"><li>الإطار العام للبحث: المشكلة، الأسئلة، الأهداف والأهمية.</li><li>الإطار النظري: التحول الرقمي ونماذج قبول التكنولوجيا ونجاح نظم المعلومات.</li><li>الدراسات السابقة والفجوة البحثية.</li><li>منهجية البحث وتحليل التحديات.</li><li>الحلول التقنية والتنظيمية المقترحة.</li><li>النتائج والتوصيات والمراجع.</li></ol><p style="padding:12px;background:#eef4f1;border-radius:12px">تم حذف الاسم والرقم الجامعي من نسخة العرض في Portfolio.</p></article></div>`
-  },
-  {
-    id:"national-day-poster",
-    title:"عزنا بطبعنا — بوستر دعوة للمشاركة",
-    type:"Poster Design",
-    categories:["posters"],
-    featured:false,
-    embedCover:true,
-    description:"بوستر معلوماتي لمسابقة إبداعية بمناسبة اليوم الوطني السعودي، يوضح فكرة الفعالية ومجالات المشاركة وآلية التسجيل.",
-    tags:["Poster","Event Communication","Visual Design"],
-    previewUrl:"https://drive.google.com/file/d/17IRhSgU7Tb8G1aCoOqDU9CB1aWcd66dc/preview",
-    sourceUrl:"https://drive.google.com/file/d/17IRhSgU7Tb8G1aCoOqDU9CB1aWcd66dc/view"
-  },
-  {
-    id:"heart-care-brochure",
-    title:"العناية بالقلب — نموذج مطوية/نشرة طبية",
-    type:"Brochure / Medical Leaflet",
-    categories:["brochures"],
-    featured:false,
-    sanitizedPreview:true,
-    hideSource:true,
-    description:"نموذج من أرشيف تصميم المطويات والنشرات الطبية. تعرض نسخة Portfolio البناء التحريري والبصري بعد إزالة بيانات الاتصال والأسماء من النموذج الأصلي.",
-    tags:["Brochure","Leaflet","Healthcare","Information Design"],
-    previewHtml:`<div style="min-height:520px;padding:24px;background:#e9f4f2;overflow:auto"><div style="max-width:820px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:white;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(16,42,43,.12)"><section style="padding:24px;background:#1c7776;color:white"><small>نشرة طبية</small><h3 style="font-size:30px;line-height:1.2">العناية بالقلب</h3><p>تقديم أعلى مستوى من الرعاية للمرضى.</p></section><section style="padding:24px"><h4>من نحن</h4><p>محتوى تعريفي حول الرعاية القلبية، أحدث الابتكارات في الفحص التشخيصي والتدخل القلبي وخيارات العلاج.</p><h4>خدمات مختارة</h4><p>خدمات وقائية وتصوير وفحوصات متخصصة.</p></section><section style="padding:24px;background:#f5f8f7"><h4>إرشادات صحية</h4><p><b>01</b> تجنب التدخين للحد من مخاطر الوفاة والعجز التي يمكن الوقاية منها.</p><p><b>02</b> النشاط البدني المنتظم والمحافظة على الوزن المناسب يقللان مخاطر أمراض القلب.</p><p><b>03</b> التعرف المبكر على أعراض النوبة القلبية مهم لطلب الرعاية المناسبة.</p></section></div><p style="text-align:center;color:#61706e;font-size:12px">نسخة Portfolio منزوعة بيانات الاتصال والأسماء.</p></div>`
-  },
-  {
-    id:"motion-intro",
-    title:"موشن جرافيك تعريفي",
-    type:"Motion Graphics / Video",
-    categories:["ai"],
-    featured:false,
-    embedCover:true,
-    description:"نموذج فيديو موشن جرافيك تعريفي ضمن أرشيف الأعمال المرئية، متاح للمشاهدة مباشرة من المعرض.",
-    tags:["Motion Graphics","Video","Visual Content"],
-    previewUrl:"https://drive.google.com/file/d/1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5/preview",
-    sourceUrl:"https://drive.google.com/file/d/1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5/view"
-  }
+  {id:"hajj-presentation",title:"حج صحي — عرض تقديمي بصري",type:"Presentation",sections:["presentations"],description:"عرض بصري لحملة توعوية صحية يقدّم الإطار العام والجمهور والأهداف والرسائل بصورة منظمة.",tags:["Presentation","PR","RTL"],cover:driveThumb("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv"),previewUrl:drivePreview("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv")},
+  {id:"hotel-presentation",title:"الصناعة الفندقية",type:"Presentation",sections:["presentations"],description:"عرض تقديمي أكاديمي بصري في مجال الصناعة الفندقية والضيافة.",tags:["Presentation","Hospitality","Tourism"],cover:driveThumb("1WESFkzgWL-ZP3Ai9pGkIOnox8H8pEEnP"),previewUrl:drivePreview("1WESFkzgWL-ZP3Ai9pGkIOnox8H8pEEnP")},
+  {id:"villa-presentation",title:"عرض تسويقي لفيلا فاخرة بإطلالة على المحيط",type:"Marketing Presentation",sections:["presentations"],description:"عرض استثماري وتسويقي يعتمد الصور الكبيرة والمزايا والبيانات ضمن تسلسل بصري واضح.",tags:["Presentation","Marketing","Investment"],cover:driveThumb("1b0dFKE8pf3RjhP2i6Ept5eHmLgNXWgCj"),previewUrl:drivePreview("1b0dFKE8pf3RjhP2i6Ept5eHmLgNXWgCj")},
+  {id:"veneto-presentation",title:"فينيتو — عرض تقديمي",type:"Presentation",sections:["presentations"],description:"نموذج عرض تقديمي بصري من أرشيف الأعمال.",tags:["Presentation","Visual Design"],cover:driveThumb("1j7iav5Fg-FyolTEKq21Fs6aPvmqplOcH"),previewUrl:drivePreview("1j7iav5Fg-FyolTEKq21Fs6aPvmqplOcH")},
+  {id:"nike-marketing-mix",title:"Nike — Integrated Marketing Mix Analysis",type:"Marketing Presentation",sections:["presentations"],description:"عرض تحليلي باللغة الإنجليزية حول المزيج التسويقي الموسع لعلامة Nike.",tags:["Presentation","Marketing Mix","English"],spriteCell:[0,0]},
+  {id:"social-media-journalism",title:"صحافة السوشيال ميديا",type:"Media Presentation",sections:["presentations","media-editorial"],description:"عرض عربي حول صحافة منصات التواصل ومزاياها ومخاطرها وأمثلتها.",tags:["Presentation","Media","Social Media"],spriteCell:[1,0]},
+
+  {id:"khatt-altamas",title:"خط التماس — صحيفة رياضية إلكترونية",type:"Electronic Newspaper",sections:["media-editorial","news-sites"],description:"صحيفة رياضية إلكترونية تضم أخبارًا وتقارير وتحليلات وأقسامًا متخصصة ومرئيات.",tags:["News Website","Editorial","Sports"],coverKind:"web",previewUrl:"https://madardigital.github.io/khatt-altamas/index.html"},
+  {id:"waqie-vision",title:"واقع الرؤية — صحيفة إلكترونية",type:"Electronic Newspaper",sections:["media-editorial","news-sites"],description:"نموذج صحيفة إلكترونية حول رؤية السعودية 2030 ومشاريعها والاقتصاد والتقنية وجودة الحياة.",tags:["News Website","Vision 2030","Media"],coverKind:"web",privacySafe:true,previewHtml:`<div class="safe-web-preview"><span>صحيفة إلكترونية</span><h3>واقع الرؤية</h3><p>مشاريع الرؤية · الاقتصاد · التقنية · جودة الحياة · إنفوجرافيك وفيديو</p><small>معاينة آمنة داخل معرض الأعمال</small></div>`},
+  {id:"site123-news",title:"صحيفة إلكترونية باستخدام SITE123",type:"SITE123 Website",sections:["news-sites"],description:"نموذج صحيفة إلكترونية مبنية باستخدام منصة SITE123.",tags:["SITE123","News Website","Media"],coverKind:"web",previewHtml:`<div class="safe-web-preview"><span>SITE123</span><h3>صحيفة إلكترونية</h3><p>نموذج موقع صحفي مبني باستخدام منصة SITE123.</p></div>`},
+
+  {id:"print-news-1",title:"صحيفة ورقية — نموذج 01",type:"Print Newspaper",sections:["media-editorial","print-newspapers"],description:"نموذج صحيفة ورقية من أعمال التصميم والإخراج الصحفي.",tags:["Print","Newspaper","Editorial Design"],cover:driveThumb("1M_2cJ9mvOV2rlEHIdyo-QBS04xrRCMPW"),previewUrl:drivePreview("1M_2cJ9mvOV2rlEHIdyo-QBS04xrRCMPW")},
+  {id:"print-news-2",title:"صحيفة عين — نموذج ورقي",type:"Print Newspaper",sections:["media-editorial","print-newspapers"],description:"نموذج صحيفة ورقية يتضمن معالجة تحريرية وإخراجًا بصريًا للصفحات.",tags:["Print","Newspaper","Layout"],cover:driveThumb("1TQzVWmsakkMwsPmBW6Jd7_Fy-0iEUPaw"),previewUrl:drivePreview("1TQzVWmsakkMwsPmBW6Jd7_Fy-0iEUPaw")},
+
+  {id:"festival-content",title:"مهرجان الثقافات والشعوب — صناعة المحتوى الإعلامي",type:"Content Strategy",sections:["content-writing","campaigns"],description:"خطة محتوى رقمية تشمل الأهداف والجمهور ومحاور المحتوى والمنصات وتقويم النشر وأفكار المنشورات.",tags:["Content Writing","Content Strategy","Social Media"],cover:driveThumb("1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX"),previewUrl:drivePreview("1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX")},
+  {id:"hajj-health",title:"حملة حج صحي — خطة اتصال وتوعية",type:"PR Campaign",sections:["campaigns"],description:"حملة توعوية تتضمن تحليل الموقف والجمهور وأهداف SMART والرسائل والتكتيكات والخطة الزمنية والتقييم.",tags:["PR","Campaign","SMART","KPIs"],cover:driveThumb("1yyHwdmM3EnxS9k5huSQjuEl6evaDO37x"),previewUrl:drivePreview("1yyHwdmM3EnxS9k5huSQjuEl6evaDO37x")},
+  {id:"here-world",title:"هنا العالم 2026 — حملة علاقات عامة",type:"PR Campaign",sections:["campaigns"],description:"حملة علاقات عامة لمهرجان الثقافات والشعوب ضمن مشروع اتصال متكامل.",tags:["PR Campaign","Event","Communication"],cover:driveThumb("1qifx2eNtu5PMYCGfR2ykAC7yqHE3qreR"),previewUrl:drivePreview("1qifx2eNtu5PMYCGfR2ykAC7yqHE3qreR")},
+  {id:"media-indicators",title:"مؤشرات الأخبار الصحفية — منطقة مكة",type:"Media Analytics",sections:["campaigns"],description:"تقرير رصد وتحليل إعلامي يحول المواد الصحفية إلى مؤشرات أداء وتوزيعات وجداول وخلاصة تحليلية.",tags:["Media Monitoring","KPIs","Analytics"],cover:driveThumb("1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z"),previewUrl:drivePreview("1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z")},
+
+  {id:"lenora",title:"Lenora — متجر ومنصة تسويقية",type:"E-commerce / Marketing",sections:["stores"],description:"واجهة متجر إلكتروني لمنتجات العطور والهدايا تربط عرض المنتجات بالمحتوى التسويقي.",tags:["Store","Marketing","Web"],coverKind:"web",previewUrl:"https://madardigital.github.io/lenora-marketing-platform/"},
+  {id:"arej",title:"أريج — متجر عطور سعودي",type:"E-commerce Website",sections:["stores"],description:"واجهة متجر عربية للعطور مع قسم منتجات وتجربة تسويقية موجهة للمتصفح العربي.",tags:["Store","Perfume","Web"],coverKind:"web",previewUrl:"https://madardigital.github.io/Arej/#shop"},
+
+  {id:"adobe-1",title:"تقرير صحفي تفاعلي — Adobe Express 01",type:"Adobe Express Report",sections:["media-editorial","adobe-reports"],description:"نموذج تقرير صحفي تفاعلي باستخدام Adobe Express.",tags:["Adobe Express","Journalism","Web Report"],coverKind:"adobe",previewUrl:"https://new.express.adobe.com/webpage/vDW13GCUTqBz5"},
+  {id:"adobe-2",title:"تقرير صحفي تفاعلي — Adobe Express 02",type:"Adobe Express Report",sections:["media-editorial","adobe-reports"],description:"نموذج تقرير صحفي تفاعلي باستخدام Adobe Express.",tags:["Adobe Express","Journalism","Web Report"],coverKind:"adobe",previewUrl:"https://new.express.adobe.com/webpage/S4XmRiY6tc2bC"},
+  {id:"adobe-3",title:"تقرير صحفي تفاعلي — Adobe Express 03",type:"Adobe Express Report",sections:["media-editorial","adobe-reports"],description:"نموذج تقرير صحفي تفاعلي باستخدام Adobe Express.",tags:["Adobe Express","Journalism","Web Report"],coverKind:"adobe",previewUrl:"https://new.express.adobe.com/webpage/pM0VwSO5rIfLm"},
+  {id:"adobe-4",title:"تقرير صحفي تفاعلي — Adobe Express 04",type:"Adobe Express Report",sections:["media-editorial","adobe-reports"],description:"نموذج تقرير صحفي تفاعلي باستخدام Adobe Express.",tags:["Adobe Express","Journalism","Web Report"],coverKind:"adobe",previewUrl:"https://new.express.adobe.com/webpage/f9NOIYAlMjK6d"},
+  {id:"adobe-5",title:"تقرير صحفي تفاعلي — Adobe Express 05",type:"Adobe Express Report",sections:["media-editorial","adobe-reports"],description:"نموذج تقرير صحفي تفاعلي باستخدام Adobe Express.",tags:["Adobe Express","Journalism","Web Report"],coverKind:"adobe",previewUrl:"https://new.express.adobe.com/webpage/Tu82AVeX7PwKo"},
+  {id:"adobe-6",title:"تقرير صحفي تفاعلي — Adobe Express 06",type:"Adobe Express Report",sections:["media-editorial","adobe-reports"],description:"نموذج تقرير صحفي تفاعلي باستخدام Adobe Express.",tags:["Adobe Express","Journalism","Web Report"],coverKind:"adobe",previewUrl:"https://new.express.adobe.com/webpage/459YMq7nCmuvc"},
+
+  {id:"achievement-visual",title:"ملف إنجاز التدريب الميداني — صفحات مختارة",type:"Achievement Portfolio",sections:["achievements"],description:"صفحات مختارة من ملف إنجاز تدريب ميداني بعد حذف الأجزاء التي تحمل بيانات شخصية.",tags:["Achievement File","Training","Sanitized"],spriteCell:[1,2]},
+
+  {id:"radiology-plan",title:"الخطة التطويرية المقترحة لقسم الأشعة",type:"Client Project / Development Report",sections:["client-projects"],description:"نموذج مشروع تطويري يربط التحديات التشغيلية بالإجراءات التصحيحية وخدمات القسم.",tags:["Development Plan","Report","Healthcare"],cover:driveThumb("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg"),previewUrl:drivePreview("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg")},
+
+  {id:"research-sample",title:"بحث — التحول الرقمي في الخدمات الطلابية",type:"Academic Research",sections:["research"],description:"نموذج بحث أكاديمي منظم مع حذف بيانات الطالب من نسخة العرض.",tags:["Research","Digital Transformation","Academic"],coverKind:"document",previewHtml:`<div class="doc-preview"><span>بحث أكاديمي</span><h3>التحول الرقمي في الخدمات الطلابية</h3><ul><li>مشكلة وأسئلة البحث</li><li>الأهداف والأهمية</li><li>الإطار النظري والدراسات السابقة</li><li>المنهجية والنتائج والتوصيات</li></ul><small>معاينة منزوعة البيانات الشخصية</small></div>`},
+
+  {id:"ats-cv-1",title:"CV وفق ATS — نموذج 01",type:"ATS Resume",sections:["ats-cv"],description:"نموذج سيرة ذاتية منظمة مع إخفاء الاسم وبيانات الاتصال في معاينة المعرض.",tags:["ATS","CV","Professional"],coverKind:"cv",previewHtml:`<div class="cv-preview"><div class="redacted-name"></div><div class="redacted-contact"></div><h3>الملخص المهني</h3><p>خبرات ومهارات مصاغة بصورة مباشرة وقابلة للقراءة بواسطة أنظمة ATS.</p><h3>الخبرة العملية</h3><div class="cv-lines"></div><h3>التعليم والشهادات</h3><div class="cv-lines short"></div><small>تم إخفاء البيانات الشخصية من المعاينة.</small></div>`},
+  {id:"ats-cv-2",title:"CV وفق ATS — نموذج 02",type:"ATS Resume",sections:["ats-cv"],description:"نموذج سيرة ذاتية احترافية مهيأة للفرز الإلكتروني مع حماية البيانات الشخصية.",tags:["ATS","Resume","Career"],coverKind:"cv",previewHtml:`<div class="cv-preview"><div class="redacted-name"></div><div class="redacted-contact"></div><h3>Professional Summary</h3><div class="cv-lines"></div><h3>Experience</h3><div class="cv-lines"></div><h3>Skills & Education</h3><div class="cv-lines short"></div><small>Personal data removed from preview.</small></div>`},
+  {id:"ats-cv-3",title:"CV وفق ATS — نموذج 03",type:"ATS Resume",sections:["ats-cv"],description:"نموذج CV بهيكل واضح للأقسام والخبرات والمهارات والمؤهلات.",tags:["ATS","CV","Formatting"],coverKind:"cv",previewHtml:`<div class="cv-preview"><div class="redacted-name"></div><div class="redacted-contact"></div><h3>الخبرات</h3><div class="cv-lines"></div><h3>المهارات</h3><div class="cv-lines short"></div><h3>المؤهلات</h3><div class="cv-lines short"></div><small>تم إخفاء البيانات الشخصية من المعاينة.</small></div>`},
+  {id:"ats-cv-4",title:"CV وفق ATS — نموذج 04",type:"ATS Resume",sections:["ats-cv"],description:"نموذج سيرة ذاتية مهنية موجهة للتقديم الوظيفي والقراءة الآلية.",tags:["ATS","Resume","Professional Documents"],coverKind:"cv",previewHtml:`<div class="cv-preview"><div class="redacted-name"></div><div class="redacted-contact"></div><h3>الملخص</h3><div class="cv-lines"></div><h3>الخبرات والإنجازات</h3><div class="cv-lines"></div><h3>الشهادات والدورات</h3><div class="cv-lines short"></div><small>تم إخفاء البيانات الشخصية من المعاينة.</small></div>`},
+
+  {id:"nano-infographic",title:"تطبيقات تكنولوجيا النانو في الطب",type:"Infographic",sections:["visual-design"],description:"إنفوجرافيك علمي عربي يشرح تطبيقات تكنولوجيا النانو في المجال الطبي.",tags:["Infographic","Healthcare","Nano"],spriteCell:[0,1]},
+  {id:"digital-transformation-infographic",title:"التحول الرقمي — كن جزءًا من التغيير",type:"Infographic",sections:["visual-design"],description:"إنفوجرافيك حملة رقمية يعرض الأهداف والجمهور والمخرجات والمؤشرات والتوصيات.",tags:["Infographic","Digital Transformation","KPIs"],spriteCell:[1,1]},
+  {id:"digital-wellbeing",title:"استعادة التوازن الرقمي",type:"Visual Newsletter",sections:["visual-design"],description:"نشرة بصرية توعوية حول الاستخدام المتوازن للهاتف والتقنيات الرقمية.",tags:["Infographic","Awareness","Digital Wellbeing"],spriteCell:[2,1]},
+  {id:"ai-ml-infographic",title:"الذكاء الاصطناعي والتعلم الآلي",type:"Technology Infographic",sections:["visual-design"],description:"إنفوجرافيك تقني يوضح مفاهيم AI وML وDL والتطبيقات والفوائد والمخاطر.",tags:["Infographic","AI","Machine Learning"],spriteCell:[3,1]},
+  {id:"first-aid-brochure",title:"الإسعافات الأولية — مطوية توعوية",type:"Brochure",sections:["visual-design"],description:"مطوية ثلاثية حول الإسعافات الأولية وحقيبة الطوارئ.",tags:["Brochure","First Aid","Healthcare"],spriteCell:[0,2]},
+  {id:"mojtamaei-poster",title:"مجتمعي — بوستر تعريفي",type:"Poster",sections:["visual-design"],description:"بوستر تعريفي بصري لجمعية مجتمعية ومجالات عملها.",tags:["Poster","PR","Community"],spriteCell:[2,2]},
+  {id:"educational-poster",title:"رحلة التجارب التعليمية والترفيهية",type:"Event Poster",sections:["visual-design"],description:"بوستر فعالية للأطفال يجمع تفاصيل التجربة والتاريخ والفئة المستهدفة.",tags:["Poster","Event","Education"],spriteCell:[3,2]},
+  {id:"national-day-poster",title:"عزنا بطبعنا — بوستر",type:"Poster",sections:["visual-design"],description:"بوستر معلوماتي لفعالية إبداعية بمناسبة اليوم الوطني السعودي.",tags:["Poster","Event","Visual Design"],cover:driveThumb("17IRhSgU7Tb8G1aCoOqDU9CB1aWcd66dc"),previewUrl:drivePreview("17IRhSgU7Tb8G1aCoOqDU9CB1aWcd66dc")},
+  {id:"autism-video",title:"التوحد — فيديو توعوي",type:"AI / Awareness Video",sections:["visual-design"],description:"نموذج فيديو توعوي ضمن أعمال الفيديو والمحتوى البصري.",tags:["Video","Awareness","AI Visual Content"],cover:driveThumb("1jwu_MaFHXq97Y-_yqQWNReQKb9suMdd-"),previewUrl:drivePreview("1jwu_MaFHXq97Y-_yqQWNReQKb9suMdd-")},
+  {id:"ad-video",title:"فيديو إعلاني",type:"Advertising Video",sections:["visual-design"],description:"نموذج فيديو إعلاني من أعمال المحتوى المرئي.",tags:["Video","Advertising","Visual Content"],cover:driveThumb("1g0vZmepLw4Zis_gEIYdlHH5u77npee6Q"),previewUrl:drivePreview("1g0vZmepLw4Zis_gEIYdlHH5u77npee6Q")},
+  {id:"motion-video",title:"موشن جرافيك",type:"Motion Graphics",sections:["visual-design"],description:"نموذج موشن جرافيك من أعمال التصميم والتحريك.",tags:["Motion Graphics","Video"],cover:driveThumb("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F"),previewUrl:drivePreview("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F")},
+  {id:"motion-intro",title:"موشن جرافيك تعريفي",type:"Motion Graphics",sections:["visual-design"],description:"نموذج فيديو موشن جرافيك تعريفي ضمن أرشيف الأعمال المرئية.",tags:["Motion Graphics","Video"],cover:driveThumb("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5"),previewUrl:drivePreview("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5")},
+
+  {id:"testimonial-1",title:"رد عميل — مشروع صحيفة إلكترونية",type:"Client Feedback",sections:["testimonials"],description:"إشادة العميل بعد تسليم المشروع وحصوله على الدرجة الكاملة.",tags:["Client Feedback"],spriteCell:[0,3]},
+  {id:"testimonial-2",title:"رد عميل — تنظيم وتنسيق العمل",type:"Client Feedback",sections:["testimonials"],description:"إشادة بجودة التنظيم والترتيب بعد التسليم.",tags:["Client Feedback"],spriteCell:[1,3]}
 ];
