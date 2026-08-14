@@ -16,6 +16,17 @@
 
   const asset = path => (window.ASSETS && window.ASSETS[path]) || path;
 
+  const legacyHeroTile = document.querySelector('[data-open-project="training-needs"]');
+  if (legacyHeroTile) {
+    legacyHeroTile.dataset.openProject = 'visual-design-archive';
+    legacyHeroTile.setAttribute('aria-label','فتح أرشيف نماذج التصميم');
+    const heroImg = legacyHeroTile.querySelector('img');
+    if (heroImg) {
+      heroImg.src = 'https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w1600';
+      heroImg.alt = 'مختارات من نماذج العروض والإنفوجرافيك والبوسترات والمطويات';
+    }
+  }
+
   document.querySelectorAll('img[data-asset]').forEach(img=>{img.src=asset(img.dataset.asset);});
   const labels = {web:"المواقع والمشاريع الرقمية",ai:"الذكاء الاصطناعي",pr:"التسويق والعلاقات العامة",media:"التحليل الإعلامي",presentations:"العروض التقديمية",research:"البحوث",reports:"التقارير",achievement:"ملفات الإنجاز",infographics:"الإنفوجرافيك",posters:"البوسترات",brochures:"المطويات"};
   const featuredGrid = document.getElementById('featured-grid');
