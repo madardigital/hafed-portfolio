@@ -1,5 +1,0 @@
-window.PORTFOLIO_PROJECTS.push(
-  {id:"child-choice-visual",title:"من يصنع اختيار الطفل؟",type:"AI Visual / Editorial Design",sections:["visual-design"],description:"عمل بصري صحفي يحول موضوع البيئة الغذائية داخل المدرسة إلى مشهد رمزي مع بناء الفكرة والتكوين والـPrompt.",tags:["AI Visual","Editorial","Prompting"],spriteCell:[0,4]},
-  {id:"studynest-app",title:"StudyNest App",type:"Digital Experience Design",sections:["visual-design"],description:"تصور بصري لتجربة تطبيق حجز مساحات الدراسة وتنظيم رحلة المستخدم وعرض الخدمة.",tags:["AI Visual","App Concept","UX"],spriteCell:[1,4]},
-  {id:"blackberry-x1",title:"BlackBerry Secure X1",type:"Advertising Visual",sections:["visual-design"],description:"مفهوم إعلاني بصري لمنتج تقني يركز على الأمان والهوية الرقمية ضمن معالجة إعلانية مستقلة.",tags:["AI Visual","Advertising","Technology"],spriteCell:[2,4]}
-);
