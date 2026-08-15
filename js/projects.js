@@ -2,7 +2,7 @@ const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveThumb = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
 
 window.PORTFOLIO_ATLAS = {
-  url: "https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000&v=3",
+  url: "https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000&v=20260815-2122",
   width: 3200,
   height: 12700,
   cellWidth: 800,
@@ -38,7 +38,6 @@ window.PORTFOLIO_PROJECTS = [
   {id:"veneto-presentation",title:"فينيتو — عرض تقديمي",section:"presentations",cover:driveThumb("1j7iav5Fg-FyolTEKq21Fs6aPvmqplOcH"),previewUrl:drivePreview("1j7iav5Fg-FyolTEKq21Fs6aPvmqplOcH")},
   {id:"nike-marketing-mix",title:"Nike — Integrated Marketing Mix Analysis",section:"presentations",spriteCell:[0,0],galleryCells:[[0,0],[1,0],[2,0],[3,0],[0,1],[1,1]]},
   {id:"social-media-journalism",title:"صحافة السوشيال ميديا",section:"presentations",spriteCell:[2,1],galleryCells:[[2,1],[3,1],[0,2],[1,2]]},
-  {id:"national-day-presentation",title:"اليوم الوطني السعودي — الأمن وبناء المستقبل",section:"presentations",spriteCell:[2,2],galleryCells:[[2,2],[3,2],[0,3],[1,3]]},
   {id:"hajj-presentation",title:"حج صحي — عرض تقديمي بصري",section:"presentations",cover:driveThumb("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv"),previewUrl:drivePreview("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv")},
 
   {id:"festival-content",title:"مهرجان الثقافات والشعوب — صناعة المحتوى الإعلامي",section:"content-writing",cover:driveThumb("1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX"),previewUrl:drivePreview("1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX")},
