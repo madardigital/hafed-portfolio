@@ -67,7 +67,7 @@ window.PORTFOLIO_PROJECTS = [
 
   {id:"radiology-plan",title:"الخطة التطويرية المقترحة لقسم الأشعة",section:"client-projects",cover:driveThumb("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg"),previewUrl:drivePreview("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg")},
 
-  {id:"research-sample",title:"دراسة حالة — Winter at Tantora في العلا",section:"research",cover:"assets/research-winter-at-tantora.webp",imageUrls:["assets/research-winter-at-tantora.webp"]},
+  {id:"research-sample",title:"دراسة فقهية مقارنة — حكم خدمة المرأة لزوجها",section:"research",cover:"assets/research-winter-at-tantora.webp?v=20260815-2",imageUrls:["assets/research-winter-at-tantora.webp?v=20260815-2"]},
 
   {id:"ats-cv-collection",title:"نماذج CV وفق نظام ATS",section:"ats-cv",spriteCell:[0,5],galleryCells:[[0,5],[1,5],[2,5],[3,5]],ctaLabel:"استعراض نماذج CV"},
 
