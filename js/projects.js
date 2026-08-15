@@ -2,7 +2,7 @@ const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveThumb = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
 
 window.PORTFOLIO_ATLAS = {
-  url: "https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000",
+  url: "https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000&v=3",
   width: 3200,
   height: 12700,
   cellWidth: 800,
