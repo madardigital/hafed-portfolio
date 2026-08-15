@@ -40,10 +40,9 @@
     if (p.cover) return `<img loading="lazy" src="${p.cover}" alt="معاينة ${p.title}">`;
     if (p.coverKind === 'feedback') return `<div class="feedback-cover"><span>آراء العملاء</span><strong>ردود حقيقية بعد التسليم</strong><small>استعرض المجموعة</small></div>`;
     if (p.coverKind === 'adobe') return `<div class="web-cover adobe"><span>Adobe Express</span><strong>تقارير صحفية تفاعلية</strong><small>6 نماذج</small></div>`;
-    if (p.coverKind === 'site123') return `<div class="web-cover site123"><span>SITE123</span><strong>صحيفة جذر</strong><small>صحيفة إلكترونية</small></div>`;
-    if (p.coverKind === 'web') return `<div class="web-cover"><span>Website</span><strong>${p.title}</strong><small>معاينة داخل الموقع</small></div>`;
-    if (p.coverKind === 'document') return `<div class="document-cover"><strong>${p.title}</strong></div>`;
-    return `<div class="document-cover"><strong>${p.title}</strong></div>`;
+    if (p.coverKind === 'web') return `<div class="web-cover"><span>Website</span><strong>معاينة داخلية</strong><small>تصفح النموذج داخل الموقع</small></div>`;
+    if (p.coverKind === 'document') return `<div class="document-cover"><span>Document</span><strong>نموذج منظم</strong></div>`;
+    return `<div class="document-cover"><span>Portfolio</span><strong>معاينة النموذج</strong></div>`;
   }
 
   function ctaLabel(p) {
@@ -57,8 +56,8 @@
     return (p.subcategory === 'video' || p.subcategory === 'motion') ? playIcon : eyeIcon;
   }
 
-  function cardMarkup(p) {
-    return `<article class="project-card" data-project-id="${p.id}" tabindex="0" role="button" aria-label="${ctaLabel(p)}: ${p.title}">
+  function cardMarkup(p, collapsed = false) {
+    return `<article class="project-card${collapsed ? ' is-collapsed' : ''}" data-project-id="${p.id}" tabindex="0" role="button" aria-label="${ctaLabel(p)}: ${p.title}">
       <div class="project-media">${coverMarkup(p)}</div>
       <div class="project-copy">
         <h3>${p.title}</h3>
@@ -81,11 +80,18 @@
     </div>`;
   }
 
+  function showMoreButton(section, count) {
+    if (!section.initialVisible || count <= section.initialVisible) return '';
+    return `<button type="button" class="show-more" data-expand-section="${section.id}" aria-expanded="false">
+      <span>عرض بقية النماذج</span><b aria-hidden="true">＋</b>
+    </button>`;
+  }
+
   function renderSections() {
     if (!root) return;
     root.innerHTML = sections.map((section, idx) => {
       const list = projects.filter(p => p.section === section.id);
-      const projectsHtml = list.length ? `<div class="project-grid" data-section-grid="${section.id}">${list.map(cardMarkup).join('')}</div>` : '';
+      const projectsHtml = list.length ? `<div class="project-grid" data-section-grid="${section.id}">${list.map((p, projectIndex) => cardMarkup(p, Boolean(section.initialVisible && projectIndex >= section.initialVisible))).join('')}</div>` : '';
       const subtitle = section.subtitle ? `<p>${section.subtitle}</p>` : '';
       return `<section class="portfolio-section" id="${section.id}">
         <div class="container">
@@ -93,12 +99,14 @@
           ${linkGateway(section)}
           ${visualFilters(section)}
           ${projectsHtml}
+          ${showMoreButton(section, list.length)}
         </div>
       </section>`;
     }).join('');
 
     bindProjectCards();
     bindFilters();
+    bindExpanders();
   }
 
   function bindProjectCards() {
@@ -119,11 +127,29 @@
       btn.addEventListener('click', () => {
         const filter = btn.dataset.filter;
         const row = btn.closest('.filter-row');
+        const section = btn.closest('.portfolio-section');
+        const grid = section?.querySelector('.project-grid');
+        const moreButton = section?.querySelector('.show-more');
         row?.querySelectorAll('.filter-chip').forEach(b => b.classList.toggle('active', b === btn));
-        document.querySelectorAll('#visual-design .project-card').forEach(card => {
+        grid?.classList.toggle('filtering', filter !== 'all');
+        if (moreButton) moreButton.hidden = filter !== 'all';
+        section?.querySelectorAll('.project-card').forEach(card => {
           const p = projects.find(x => x.id === card.dataset.projectId);
           card.hidden = filter !== 'all' && p?.subcategory !== filter;
         });
+      });
+    });
+  }
+
+  function bindExpanders() {
+    document.querySelectorAll('[data-expand-section]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const grid = document.querySelector(`[data-section-grid="${btn.dataset.expandSection}"]`);
+        if (!grid) return;
+        const expanded = grid.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', String(expanded));
+        btn.querySelector('span').textContent = expanded ? 'عرض نماذج أقل' : 'عرض بقية النماذج';
+        btn.querySelector('b').textContent = expanded ? '−' : '＋';
       });
     });
   }
@@ -136,19 +162,35 @@
     return [];
   }
 
+  function galleryItems(p) {
+    if (p.imageUrls?.length) return p.imageUrls.map(url => ({kind: 'image', url}));
+    return galleryRects(p).map(rect => ({kind: 'atlas', rect}));
+  }
+
   function galleryMarkup(p, index = 0) {
-    const rects = galleryRects(p);
-    const safeIndex = Math.max(0, Math.min(index, rects.length - 1));
-    const rect = rects[safeIndex];
-    return `<div class="gallery-viewer" data-gallery-project="${p.id}">
-      <div class="gallery-stage">${atlasBlock(rect, 'gallery-atlas')}</div>
-      <div class="gallery-controls">
+    const items = galleryItems(p);
+    const safeIndex = Math.max(0, Math.min(index, items.length - 1));
+    const item = items[safeIndex];
+    const visual = item.kind === 'image'
+      ? `<img class="gallery-image" src="${item.url}" alt="معاينة ${p.title}">`
+      : atlasBlock(item.rect, 'gallery-atlas');
+    const controls = items.length > 1 ? `<div class="gallery-controls">
         <button type="button" class="gallery-nav" data-gallery-prev aria-label="السابق">→</button>
-        <strong class="gallery-count">${safeIndex + 1} / ${rects.length}</strong>
+        <strong class="gallery-count">${safeIndex + 1} / ${items.length}</strong>
         <button type="button" class="gallery-nav" data-gallery-next aria-label="التالي">←</button>
       </div>
-      <div class="gallery-dots">${rects.map((_, i) => `<button type="button" class="gallery-dot ${i === safeIndex ? 'active' : ''}" data-gallery-index="${i}" aria-label="صفحة ${i + 1}"></button>`).join('')}</div>
-      <p class="gallery-hint">اسحب يمينًا أو يسارًا للتنقل</p>
+      <div class="gallery-dots">${items.map((_, i) => `<button type="button" class="gallery-dot ${i === safeIndex ? 'active' : ''}" data-gallery-index="${i}" aria-label="صفحة ${i + 1}"></button>`).join('')}</div>
+      <p class="gallery-hint">استخدم الأسهم أو اسحب للتنقل</p>` : '';
+    return `<div class="gallery-viewer" data-gallery-project="${p.id}">
+      <div class="gallery-stage${item.kind === 'image' ? ' has-image' : ''}">${visual}</div>
+      ${controls}
+    </div>`;
+  }
+
+  function frameShellMarkup(src, title, frameClass = '') {
+    return `<div class="frame-shell">
+      <div class="frame-loading" aria-live="polite"><span aria-hidden="true"></span><b>جارٍ تحميل المعاينة…</b><small>ستظهر هنا داخل الموقع</small></div>
+      <iframe class="${frameClass}" data-preview-frame data-preview-src="${src}" title="${title}" loading="eager" scrolling="yes" referrerpolicy="no-referrer" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>`;
   }
 
@@ -157,12 +199,12 @@
     if (!first) return '';
     return `<div class="preview-set-shell">
       <div class="preview-tabs">${p.previewSet.map((item, i) => `<button type="button" class="preview-tab ${i === 0 ? 'active' : ''}" data-preview-url="${item.url}">${item.label}</button>`).join('')}</div>
-      <div class="preview-set-frame"><iframe title="${p.title}" src="${first.url}" loading="lazy" allowfullscreen></iframe></div>
+      <div class="preview-set-frame">${frameShellMarkup(first.url, p.title)}</div>
     </div>`;
   }
 
   function iframeMarkup(p) {
-    return `<iframe class="project-iframe" title="معاينة ${p.title}" src="${p.previewUrl}" loading="lazy" scrolling="yes" referrerpolicy="no-referrer" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+    return frameShellMarkup(p.previewUrl, `معاينة ${p.title}`, 'project-iframe');
   }
 
   function openProject(id) {
@@ -174,7 +216,7 @@
     modalTitle.textContent = p.title;
 
     if (p.previewSet?.length) view.innerHTML = previewSetMarkup(p);
-    else if (galleryRects(p).length) view.innerHTML = galleryMarkup(p, 0);
+    else if (galleryItems(p).length) view.innerHTML = galleryMarkup(p, 0);
     else if (p.previewHtml) view.innerHTML = p.previewHtml;
     else if (p.previewUrl) view.innerHTML = iframeMarkup(p);
     else view.innerHTML = `<div class="safe-web-preview"><h3>${p.title}</h3></div>`;
@@ -184,6 +226,29 @@
     document.body.classList.add('modal-open');
     panel?.focus();
     bindModalPreviewControls();
+    bindFrameLoaders();
+  }
+
+  function setFrameLoading(frame) {
+    const shell = frame.closest('.frame-shell');
+    if (!shell) return;
+    shell.classList.remove('loaded', 'slow');
+    clearTimeout(frame._slowTimer);
+    frame._slowTimer = setTimeout(() => shell.classList.add('slow'), 6500);
+  }
+
+  function bindFrameLoaders() {
+    document.querySelectorAll('[data-preview-frame]').forEach(frame => {
+      if (frame.dataset.loaderBound === 'true') return;
+      frame.dataset.loaderBound = 'true';
+      setFrameLoading(frame);
+      frame.addEventListener('load', () => {
+        clearTimeout(frame._slowTimer);
+        frame.closest('.frame-shell')?.classList.add('loaded');
+      });
+      frame.addEventListener('error', () => frame.closest('.frame-shell')?.classList.add('slow'));
+      if (frame.dataset.previewSrc) frame.src = frame.dataset.previewSrc;
+    });
   }
 
   function bindModalPreviewControls() {
@@ -191,7 +256,11 @@
       tab.addEventListener('click', () => {
         document.querySelectorAll('.preview-tab').forEach(b => b.classList.toggle('active', b === tab));
         const frame = document.querySelector('.preview-set-frame iframe');
-        if (frame) frame.src = tab.dataset.previewUrl;
+        if (frame) {
+          setFrameLoading(frame);
+          frame.dataset.previewSrc = tab.dataset.previewUrl;
+          frame.src = tab.dataset.previewUrl;
+        }
       });
     });
 
@@ -199,8 +268,8 @@
     if (!viewer || !currentProject) return;
 
     const go = index => {
-      const rects = galleryRects(currentProject);
-      currentGalleryIndex = (index + rects.length) % rects.length;
+      const items = galleryItems(currentProject);
+      currentGalleryIndex = (index + items.length) % items.length;
       view.innerHTML = galleryMarkup(currentProject, currentGalleryIndex);
       bindModalPreviewControls();
     };
@@ -226,7 +295,12 @@
   }
 
   document.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal?.classList.contains('open')) closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (!modal?.classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') document.querySelector('[data-gallery-next]')?.click();
+    if (e.key === 'ArrowRight') document.querySelector('[data-gallery-prev]')?.click();
+  });
 
   const menu = document.querySelector('.menu-toggle');
   const nav = document.getElementById('main-nav');

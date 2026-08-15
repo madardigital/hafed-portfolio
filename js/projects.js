@@ -11,23 +11,19 @@ window.PORTFOLIO_ATLAS = {
 
 window.PORTFOLIO_SECTIONS = [
   {id:"presentations",title:"العروض التقديمية",subtitle:""},
-  {id:"media-editorial",title:"المحتوى الإعلامي والتحريري",subtitle:"أخبار، تقارير، مقالات، مقابلات، تحقيقات، تغطيات ومواد صحفية.",links:[
-    {href:"#news-sites",title:"الصحف الإلكترونية",text:"مواقع صحفية وتغطيات رقمية."},
-    {href:"#print-newspapers",title:"الصحف الورقية",text:"تصميم وإخراج صفحات صحفية مطبوعة."},
-    {href:"#adobe-reports",title:"التقارير التفاعلية",text:"تقارير وصفحات صحفية باستخدام Adobe Express."}
-  ]},
+  {id:"media-editorial",title:"المحتوى الإعلامي والتحريري",subtitle:"أخبار، تقارير، مقالات، مقابلات، تحقيقات، تغطيات ومواد صحفية."},
   {id:"content-writing",title:"كتابة المحتوى",subtitle:"نماذج كتابة وتخطيط المحتوى والرسائل ومحاور النشر."},
   {id:"campaigns",title:"الخطط والحملات والتحليلات ومؤشرات القياس",subtitle:"خطط تسويقية، حملات علاقات عامة، تحليل إعلامي، مؤشرات أداء واتصال رقمي."},
   {id:"news-sites",title:"مواقع صحف إلكترونية",subtitle:"نماذج مواقع صحفية وإعلامية إلكترونية."},
   {id:"stores",title:"مواقع إلكترونية لمتاجر",subtitle:"نماذج متاجر ومنصات تسويقية إلكترونية."},
   {id:"print-newspapers",title:"صحف ورقية",subtitle:"نماذج تصميم وإخراج صحف مطبوعة."},
   {id:"adobe-reports",title:"تقارير صحفية باستخدام Adobe Express",subtitle:"تقارير وصفحات صحفية تفاعلية."},
-  {id:"achievements",title:"ملفات إنجاز التدريب",subtitle:"صفحات فعلية مختارة بعد إخفاء البيانات الشخصية."},
-  {id:"client-projects",title:"مشاريع تطبيقية لعملاء",subtitle:"نماذج خطط تطويرية وتقارير ومخرجات تطبيقية."},
+  {id:"achievements",title:"ملفات الإنجاز والتدريب والحقائب والأدلة",subtitle:"نماذج فعلية مختارة بعد إخفاء البيانات الشخصية."},
+  {id:"client-projects",title:"مشاريع وخطط تطبيقية",subtitle:"نماذج خطط تطويرية وتقارير ومخرجات تطبيقية."},
   {id:"research",title:"البحوث",subtitle:"نماذج بحوث أكاديمية منظمة."},
   {id:"ats-cv",title:"CV وفق نظام ATS",subtitle:"نماذج فعلية مع إخفاء الأسماء وبيانات الاتصال."},
-  {id:"visual-design",title:"التصاميم المرئية",subtitle:"إنفوجرافيك، بوسترات، مطويات، تصاميم إعلانية ورقمية، أعمال AI، فيديو وموشن جرافيك.",filters:[
-    {id:"all",label:"الكل"},{id:"infographic",label:"إنفوجرافيك"},{id:"poster",label:"بوسترات"},{id:"brochure",label:"مطويات"},{id:"advertising",label:"إعلاني"},{id:"ai",label:"أعمال AI"},{id:"digital",label:"تصميم رقمي"},{id:"video",label:"فيديو"},{id:"motion",label:"موشن"}
+  {id:"visual-design",title:"التصاميم المرئية",subtitle:"إنفوجرافيك، بوسترات، تصاميم إعلانية ورقمية، أعمال AI، فيديو وموشن جرافيك.",initialVisible:9,filters:[
+    {id:"all",label:"الكل"},{id:"infographic",label:"إنفوجرافيك"},{id:"poster",label:"بوسترات"},{id:"advertising",label:"إعلاني"},{id:"ai",label:"أعمال AI"},{id:"digital",label:"تصميم رقمي"},{id:"video",label:"فيديو"},{id:"motion",label:"موشن"}
   ]},
   {id:"testimonials",title:"بعض ردود العملاء",subtitle:"لقطات مختارة من الردود بعد التسليم."}
 ];
@@ -37,8 +33,10 @@ window.PORTFOLIO_PROJECTS = [
   {id:"villa-presentation",title:"عرض تسويقي لفيلا فاخرة بإطلالة على المحيط",section:"presentations",cover:driveThumb("1b0dFKE8pf3RjhP2i6Ept5eHmLgNXWgCj"),previewUrl:drivePreview("1b0dFKE8pf3RjhP2i6Ept5eHmLgNXWgCj")},
   {id:"veneto-presentation",title:"فينيتو — عرض تقديمي",section:"presentations",cover:driveThumb("1j7iav5Fg-FyolTEKq21Fs6aPvmqplOcH"),previewUrl:drivePreview("1j7iav5Fg-FyolTEKq21Fs6aPvmqplOcH")},
   {id:"nike-marketing-mix",title:"Nike — Integrated Marketing Mix Analysis",section:"presentations",spriteCell:[0,0],galleryCells:[[0,0],[1,0],[2,0],[3,0],[0,1],[1,1]]},
-  {id:"social-media-journalism",title:"صحافة السوشيال ميديا",section:"presentations",spriteCell:[2,1],galleryCells:[[2,1],[3,1],[0,2],[1,2]]},
   {id:"hajj-presentation",title:"حج صحي — عرض تقديمي بصري",section:"presentations",cover:driveThumb("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv"),previewUrl:drivePreview("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv")},
+
+  {id:"social-media-journalism",title:"صحافة السوشيال ميديا",section:"media-editorial",spriteCell:[2,1],galleryCells:[[2,1],[3,1],[0,2],[1,2]]},
+  {id:"editorial-samples",title:"نماذج تحرير وتغطيات صحفية",section:"media-editorial",spriteCell:[2,2],galleryCells:[[2,2],[3,2],[0,3],[1,3]]},
 
   {id:"festival-content",title:"مهرجان الثقافات والشعوب — صناعة المحتوى الإعلامي",section:"content-writing",cover:driveThumb("1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX"),previewUrl:drivePreview("1BJA92ChHS7Kp4XAU-d0wnpXYYHhUMVLX")},
 
@@ -48,7 +46,6 @@ window.PORTFOLIO_PROJECTS = [
 
   {id:"khatt-altamas",title:"خط التماس — صحيفة رياضية إلكترونية",section:"news-sites",coverKind:"web",previewUrl:"https://madardigital.github.io/khatt-altamas/index.html"},
   {id:"waqie-vision",title:"واقع الرؤية — صحيفة إلكترونية",section:"news-sites",coverKind:"web",previewUrl:"https://madardigital.github.io/waqie-vision/"},
-  {id:"jothor-site123",title:"جذر — صحيفة إلكترونية باستخدام SITE123",section:"news-sites",coverKind:"site123",previewHtml:`<div class="safe-web-preview"><span>SITE123</span><h3>صحيفة جذر</h3><small>معاينة تعريفية داخل معرض الأعمال</small></div>`},
 
   {id:"lenora",title:"Lenora — متجر ومنصة تسويقية",section:"stores",coverKind:"web",previewUrl:"https://madardigital.github.io/lenora-marketing-platform/"},
   {id:"arej",title:"أريج — متجر عطور سعودي",section:"stores",coverKind:"web",previewUrl:"https://madardigital.github.io/Arej/#shop"},
@@ -66,30 +63,30 @@ window.PORTFOLIO_PROJECTS = [
   ]},
 
   {id:"achievement-field-training",title:"ملف إنجاز التدريب الميداني",section:"achievements",spriteCell:[2,3],galleryCells:[[2,3],[3,3],[0,4],[1,4],[2,4],[3,4]]},
+  {id:"first-aid-guide",title:"دليل توعوي للإسعافات الأولية",section:"achievements",cover:"assets/first-aid-guide.webp",imageUrls:["assets/first-aid-guide.webp"]},
 
   {id:"radiology-plan",title:"الخطة التطويرية المقترحة لقسم الأشعة",section:"client-projects",cover:driveThumb("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg"),previewUrl:drivePreview("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg")},
 
-  {id:"research-sample",title:"بحث — التحول الرقمي في الخدمات الطلابية",section:"research",coverKind:"document",previewHtml:`<div class="doc-preview"><h3>التحول الرقمي في الخدمات الطلابية</h3><small>معاينة مختصرة داخل الموقع</small></div>`},
+  {id:"research-sample",title:"دراسة حالة — Winter at Tantora في العلا",section:"research",cover:"assets/research-winter-at-tantora.webp",imageUrls:["assets/research-winter-at-tantora.webp"]},
 
   {id:"ats-cv-collection",title:"نماذج CV وفق نظام ATS",section:"ats-cv",spriteCell:[0,5],galleryCells:[[0,5],[1,5],[2,5],[3,5]],ctaLabel:"استعراض نماذج CV"},
 
-  {id:"child-choice-visual",title:"من يصنع اختيار الطفل؟",section:"visual-design",subcategory:"ai",spriteCell:[2,6]},
+  {id:"autism-video",title:"التوحد — فيديو توعوي",section:"visual-design",subcategory:"video",cover:driveThumb("1jwu_MaFHXq97Y-_yqQWNReQKb9suMdd-"),previewUrl:drivePreview("1jwu_MaFHXq97Y-_yqQWNReQKb9suMdd-")},
   {id:"studynest-app",title:"StudyNest App",section:"visual-design",subcategory:"digital",spriteCell:[3,6]},
   {id:"blackberry-x1",title:"BlackBerry Secure X1",section:"visual-design",subcategory:"advertising",spriteCell:[0,7]},
+  {id:"child-choice-visual",title:"من يصنع اختيار الطفل؟",section:"visual-design",subcategory:"ai",spriteCell:[2,6]},
   {id:"digital-transformation-infographic",title:"التحول الرقمي — كن جزءًا من التغيير",section:"visual-design",subcategory:"infographic",spriteCell:[1,7]},
   {id:"nano-infographic",title:"تطبيقات تكنولوجيا النانو في الطب",section:"visual-design",subcategory:"infographic",spriteCell:[2,7]},
-  {id:"dashboard-infographic",title:"لوحة مؤشرات بصرية",section:"visual-design",subcategory:"infographic",spriteCell:[3,7]},
-  {id:"digital-balance",title:"استعادة التوازن الرقمي",section:"visual-design",subcategory:"infographic",spriteCell:[0,8]},
   {id:"ml-cancer-infographic",title:"Machine Learning in Cancer — Infographic",section:"visual-design",subcategory:"infographic",spriteCell:[1,8]},
   {id:"national-day-poster",title:"عزنا بطبعنا — بوستر",section:"visual-design",subcategory:"poster",spriteCell:[2,8]},
-  {id:"mojtamaei-poster",title:"مجتمعي — بوستر تعريفي",section:"visual-design",subcategory:"poster",spriteCell:[3,8]},
   {id:"educational-event-poster",title:"رحلة التجارب التعليمية والترفيهية",section:"visual-design",subcategory:"poster",spriteCell:[0,9]},
-  {id:"first-aid-brochure",title:"الإسعافات الأولية — مطوية توعوية",section:"visual-design",subcategory:"brochure",spriteCell:[2,9]},
+  {id:"dashboard-infographic",title:"لوحة مؤشرات بصرية",section:"visual-design",subcategory:"infographic",spriteCell:[3,7]},
+  {id:"digital-balance",title:"استعادة التوازن الرقمي",section:"visual-design",subcategory:"infographic",spriteCell:[0,8]},
+  {id:"mojtamaei-poster",title:"مجتمعي — بوستر تعريفي",section:"visual-design",subcategory:"poster",spriteCell:[3,8]},
   {id:"flower-landing",title:"رحلة الباقة — تصميم صفحة رقمية",section:"visual-design",subcategory:"digital",spriteCell:[3,9]},
-  {id:"autism-video",title:"التوحد — فيديو توعوي",section:"visual-design",subcategory:"video",cover:driveThumb("1jwu_MaFHXq97Y-_yqQWNReQKb9suMdd-"),previewUrl:drivePreview("1jwu_MaFHXq97Y-_yqQWNReQKb9suMdd-")},
   {id:"ad-video",title:"فيديو إعلاني",section:"visual-design",subcategory:"video",cover:driveThumb("1g0vZmepLw4Zis_gEIYdlHH5u77npee6Q"),previewUrl:drivePreview("1g0vZmepLw4Zis_gEIYdlHH5u77npee6Q")},
   {id:"motion-video",title:"موشن جرافيك — ضريبة القيمة المضافة",section:"visual-design",subcategory:"motion",cover:driveThumb("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F"),previewUrl:drivePreview("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F")},
   {id:"motion-intro",title:"موشن جرافيك تعريفي",section:"visual-design",subcategory:"motion",cover:driveThumb("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5"),previewUrl:drivePreview("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5")},
 
-  {id:"testimonials-collection",title:"ردود العملاء — مختارات",section:"testimonials",ctaLabel:"استعراض الردود",spriteRect:[0,7200,800,1100],galleryRects:[[0,7200,800,1100],[800,7200,800,1100],[1600,7200,800,1100],[2400,7200,800,1100],[0,8300,800,1100],[800,8300,800,1100],[1600,8300,800,1100],[2400,8300,800,1100],[0,9400,800,1100],[800,9400,800,1100],[1600,9400,800,1100],[2400,9400,800,1100],[0,10500,800,1100],[800,10500,800,1100],[1600,10500,800,1100],[2400,10500,800,1100],[0,11600,800,1100],[800,11600,800,1100]]}
+  {id:"testimonials-collection",title:"ردود العملاء — مختارات",section:"testimonials",ctaLabel:"استعراض الردود",spriteRect:[0,7200,800,1100],galleryRects:[[0,7200,800,1100],[1600,7200,800,1100],[0,8300,800,1100],[800,8300,800,1100],[0,9400,800,1100],[1600,9400,800,1100],[2400,9400,800,1100],[0,10500,800,1100],[0,11600,800,1100],[800,11600,800,1100]]}
 ];
