@@ -1,9 +1,9 @@
 const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveThumb = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
-const siteShot = url => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=900`;
+const siteShot = url => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1600&h=900`;
 
 window.PORTFOLIO_ATLAS = {
-  url: "https://drive.google.com/thumbnail?id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&sz=w5000&v=20260817-1926",
+  url: "https://drive.google.com/uc?export=view&id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&v=20260817-2002",
   width: 3200,
   height: 18200,
   cellWidth: 800,
@@ -44,7 +44,7 @@ window.PORTFOLIO_PROJECTS = [
   {id:"print-news-1",title:"صحيفة ورقية — نموذج 01",section:"print-newspapers",cover:driveThumb("1M_2cJ9mvOV2rlEHIdyo-QBS04xrRCMPW"),previewUrl:drivePreview("1M_2cJ9mvOV2rlEHIdyo-QBS04xrRCMPW")},
   {id:"print-news-2",title:"صحيفة عين — نموذج ورقي",section:"print-newspapers",cover:driveThumb("1TQzVWmsakkMwsPmBW6Jd7_Fy-0iEUPaw"),previewUrl:drivePreview("1TQzVWmsakkMwsPmBW6Jd7_Fy-0iEUPaw")},
 
-  {id:"adobe-express-collection",title:"تقارير صحفية تفاعلية — Adobe Express",section:"adobe-reports",coverKind:"adobe",ctaLabel:"استعراض التقارير",previewSet:[
+  {id:"adobe-express-collection",title:"تقارير صحفية تفاعلية — Adobe Express",section:"adobe-reports",cover:siteShot("https://new.express.adobe.com/webpage/vDW13GCUTqBz5"),coverKind:"adobe",ctaLabel:"استعراض التقارير",previewSet:[
     {label:"النموذج 1",url:"https://new.express.adobe.com/webpage/vDW13GCUTqBz5"},
     {label:"النموذج 2",url:"https://new.express.adobe.com/webpage/f9NOIYAlMjK6d"},
     {label:"النموذج 3",url:"https://new.express.adobe.com/webpage/Tu82AVeX7PwKo"},
@@ -83,7 +83,7 @@ window.PORTFOLIO_PROJECTS = [
   {id:"motion-video",title:"موشن جرافيك — ضريبة القيمة المضافة",section:"visual-design",subcategory:"motion",cover:driveThumb("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F"),previewUrl:drivePreview("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F")},
   {id:"motion-intro",title:"موشن جرافيك تعريفي",section:"visual-design",subcategory:"motion",cover:driveThumb("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5"),previewUrl:drivePreview("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5")},
 
-  {id:"testimonials-collection",title:"ردود العملاء — مختارات",section:"testimonials",ctaLabel:"استعراض الردود",spriteRect:[0,12700,800,1100],galleryRects:[
+  {id:"testimonials-collection",title:"ردود العملاء — مختارات",section:"testimonials",ctaLabel:"استعراض الردود",coverKind:"feedback",galleryRects:[
     [0,12700,800,1100],[800,12700,800,1100],[1600,12700,800,1100],[2400,12700,800,1100],
     [0,13800,800,1100],[800,13800,800,1100],[1600,13800,800,1100],[2400,13800,800,1100],
     [0,14900,800,1100],[800,14900,800,1100],[1600,14900,800,1100],[2400,14900,800,1100],
