@@ -16,3 +16,5 @@
 
 ## النشر
 الموقع Static ومهيأ لـ GitHub Pages. بعد رفع الملفات، فعّل Pages من إعدادات المستودع واختر النشر من `main` / root أو GitHub Actions.
+
+<!-- Pages redeploy: 2026-08-17 -->
