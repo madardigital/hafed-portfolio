@@ -1,9 +1,8 @@
 const drivePreview = id => `https://drive.google.com/file/d/${id}/preview`;
 const driveThumb = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
-const siteShot = url => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1600&h=900`;
 
 window.PORTFOLIO_ATLAS = {
-  url: "https://drive.google.com/uc?export=view&id=1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p&v=20260817-2002",
+  url: "assets/portfolio-project-atlas-v4.jpg?v=20260817-2035",
   width: 3200,
   height: 18200,
   cellWidth: 800,
@@ -34,17 +33,17 @@ window.PORTFOLIO_PROJECTS = [
   {id:"nike-marketing-mix",title:"Nike — Integrated Marketing Mix Analysis",section:"presentations",spriteCell:[0,0],galleryCells:[[0,0],[1,0],[2,0],[3,0],[0,1],[1,1]]},
   {id:"hajj-presentation",title:"حج صحي — عرض تقديمي بصري",section:"presentations",cover:driveThumb("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv"),previewUrl:drivePreview("1vQrPM-ox4eomM5IX-AtBNWgXwHMgoIfv")},
 
-  {id:"khatt-altamas",title:"خط التماس — صحيفة رياضية إلكترونية",section:"news-sites",cover:siteShot("https://madardigital.github.io/khatt-altamas/index.html"),coverKind:"web",previewUrl:"https://madardigital.github.io/khatt-altamas/index.html"},
-  {id:"waqie-vision",title:"واقع الرؤية — صحيفة إلكترونية",section:"news-sites",cover:siteShot("https://madardigital.github.io/waqie-vision/"),coverKind:"web",previewUrl:"https://madardigital.github.io/waqie-vision/"},
-  {id:"jithr-site123",title:"صحيفة إلكترونية باستخدام سايت 123 (SITE 123)",section:"news-sites",cover:siteShot("https://69d5145dace78.site123.me/"),coverKind:"web",previewUrl:"https://69d5145dace78.site123.me/"},
+  {id:"khatt-altamas",title:"خط التماس — صحيفة رياضية إلكترونية",section:"news-sites",cover:"assets/site-khatt-altamas.jpg?v=20260817-2035",coverKind:"web",previewUrl:"https://madardigital.github.io/khatt-altamas/index.html"},
+  {id:"waqie-vision",title:"واقع الرؤية — صحيفة إلكترونية",section:"news-sites",cover:"assets/site-waqie-vision.jpg?v=20260817-2035",coverKind:"web",previewUrl:"https://madardigital.github.io/waqie-vision/"},
+  {id:"jithr-site123",title:"صحيفة إلكترونية باستخدام سايت 123 (SITE 123)",section:"news-sites",cover:"assets/site-jithr-site123.jpg?v=20260817-2035",coverKind:"web",previewUrl:"https://69d5145dace78.site123.me/"},
 
-  {id:"lenora",title:"Lenora — متجر ومنصة تسويقية",section:"stores",cover:siteShot("https://madardigital.github.io/lenora-marketing-platform/"),coverKind:"web",previewUrl:"https://madardigital.github.io/lenora-marketing-platform/"},
-  {id:"arej",title:"أريج — متجر عطور سعودي",section:"stores",cover:siteShot("https://madardigital.github.io/Arej/"),coverKind:"web",previewUrl:"https://madardigital.github.io/Arej/#shop"},
+  {id:"lenora",title:"Lenora — متجر ومنصة تسويقية",section:"stores",cover:"assets/site-lenora.jpg?v=20260817-2035",coverKind:"web",previewUrl:"https://madardigital.github.io/lenora-marketing-platform/"},
+  {id:"arej",title:"أريج — متجر عطور سعودي",section:"stores",cover:"assets/site-arej.jpg?v=20260817-2035",coverKind:"web",previewUrl:"https://madardigital.github.io/Arej/#shop"},
 
   {id:"print-news-1",title:"صحيفة ورقية — نموذج 01",section:"print-newspapers",cover:driveThumb("1M_2cJ9mvOV2rlEHIdyo-QBS04xrRCMPW"),previewUrl:drivePreview("1M_2cJ9mvOV2rlEHIdyo-QBS04xrRCMPW")},
   {id:"print-news-2",title:"صحيفة عين — نموذج ورقي",section:"print-newspapers",cover:driveThumb("1TQzVWmsakkMwsPmBW6Jd7_Fy-0iEUPaw"),previewUrl:drivePreview("1TQzVWmsakkMwsPmBW6Jd7_Fy-0iEUPaw")},
 
-  {id:"adobe-express-collection",title:"تقارير صحفية تفاعلية — Adobe Express",section:"adobe-reports",cover:siteShot("https://new.express.adobe.com/webpage/vDW13GCUTqBz5"),coverKind:"adobe",ctaLabel:"استعراض التقارير",previewSet:[
+  {id:"adobe-express-collection",title:"تقارير صحفية تفاعلية — Adobe Express",section:"adobe-reports",cover:"assets/site-adobe-express.jpg?v=20260817-2035",coverKind:"adobe",ctaLabel:"استعراض التقارير",previewSet:[
     {label:"النموذج 1",url:"https://new.express.adobe.com/webpage/vDW13GCUTqBz5"},
     {label:"النموذج 2",url:"https://new.express.adobe.com/webpage/f9NOIYAlMjK6d"},
     {label:"النموذج 3",url:"https://new.express.adobe.com/webpage/Tu82AVeX7PwKo"},
