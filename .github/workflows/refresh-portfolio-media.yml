@@ -1,0 +1,92 @@
+name: Refresh portfolio media
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refresh-portfolio-media.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-media:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install media tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install gdown pillow playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Download atlas and capture site covers
+        run: |
+          python <<'PY'
+          import asyncio
+          import os
+          import gdown
+          from PIL import Image
+          from playwright.async_api import async_playwright
+
+          os.makedirs('assets', exist_ok=True)
+
+          atlas_id = '1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p'
+          atlas_path = 'assets/portfolio-project-atlas-v4.jpg'
+          gdown.download(id=atlas_id, output=atlas_path, quiet=False)
+          with Image.open(atlas_path) as im:
+              assert im.size == (3200, 18200), f'Unexpected atlas size: {im.size}'
+
+          sites = {
+              'site-khatt-altamas.jpg': 'https://madardigital.github.io/khatt-altamas/index.html',
+              'site-waqie-vision.jpg': 'https://madardigital.github.io/waqie-vision/',
+              'site-jithr-site123.jpg': 'https://69d5145dace78.site123.me/',
+              'site-lenora.jpg': 'https://madardigital.github.io/lenora-marketing-platform/',
+              'site-arej.jpg': 'https://madardigital.github.io/Arej/',
+              'site-adobe-express.jpg': 'https://new.express.adobe.com/webpage/vDW13GCUTqBz5',
+          }
+
+          async def main():
+              async with async_playwright() as p:
+                  browser = await p.chromium.launch()
+                  context = await browser.new_context(
+                      viewport={'width': 1200, 'height': 900},
+                      device_scale_factor=1,
+                      locale='ar-SA'
+                  )
+                  for filename, url in sites.items():
+                      page = await context.new_page()
+                      try:
+                          await page.goto(url, wait_until='domcontentloaded', timeout=90000)
+                          await page.wait_for_timeout(6000)
+                          await page.screenshot(
+                              path=f'assets/{filename}',
+                              type='jpeg',
+                              quality=86,
+                              full_page=False
+                          )
+                      finally:
+                          await page.close()
+                  await browser.close()
+
+          asyncio.run(main())
+          PY
+
+      - name: Commit refreshed media
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/portfolio-project-atlas-v4.jpg assets/site-*.jpg
+          if git diff --cached --quiet; then
+            echo 'No media changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Refresh portfolio atlas and website covers [skip ci]'
+          git push
