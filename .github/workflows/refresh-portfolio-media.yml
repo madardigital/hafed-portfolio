@@ -24,15 +24,16 @@ jobs:
       - name: Install media tools
         run: |
           python -m pip install --upgrade pip
-          python -m pip install gdown pillow playwright
+          python -m pip install pillow requests playwright
           python -m playwright install --with-deps chromium
 
       - name: Download atlas and capture site covers
         run: |
           python <<'PY'
           import asyncio
+          import io
           import os
-          import gdown
+          import requests
           from PIL import Image
           from playwright.async_api import async_playwright
 
@@ -40,9 +41,26 @@ jobs:
 
           atlas_id = '1bH6J0MmpYGCYEMnYPe8YOmo-MI1dpu2p'
           atlas_path = 'assets/portfolio-project-atlas-v4.jpg'
-          gdown.download(id=atlas_id, output=atlas_path, quiet=False)
-          with Image.open(atlas_path) as im:
-              assert im.size == (3200, 18200), f'Unexpected atlas size: {im.size}'
+          target_ratio = 3200 / 18200
+          found = False
+          for size in ('w3200', 'w4097', 'w4701', 'w5001'):
+              url = f'https://drive.google.com/thumbnail?id={atlas_id}&sz={size}'
+              response = requests.get(url, timeout=120)
+              response.raise_for_status()
+              try:
+                  image = Image.open(io.BytesIO(response.content)).convert('RGB')
+              except Exception:
+                  continue
+              ratio = image.width / image.height
+              print('Drive thumbnail', size, image.size, ratio)
+              if abs(ratio - target_ratio) < 0.006:
+                  if image.size != (3200, 18200):
+                      image = image.resize((3200, 18200), Image.Resampling.LANCZOS)
+                  image.save(atlas_path, 'JPEG', quality=82, optimize=True, progressive=True)
+                  found = True
+                  break
+          if not found:
+              raise RuntimeError('Drive thumbnail is still serving the obsolete atlas version.')
 
           sites = {
               'site-khatt-altamas.jpg': 'https://madardigital.github.io/khatt-altamas/index.html',
@@ -56,12 +74,12 @@ jobs:
           async def main():
               async with async_playwright() as p:
                   browser = await p.chromium.launch()
-                  context = await browser.new_context(
-                      viewport={'width': 1200, 'height': 900},
-                      device_scale_factor=1,
-                      locale='ar-SA'
-                  )
                   for filename, url in sites.items():
+                      context = await browser.new_context(
+                          viewport={'width': 1200, 'height': 900},
+                          device_scale_factor=1,
+                          locale='ar-SA'
+                      )
                       page = await context.new_page()
                       try:
                           await page.goto(url, wait_until='domcontentloaded', timeout=90000)
@@ -73,7 +91,7 @@ jobs:
                               full_page=False
                           )
                       finally:
-                          await page.close()
+                          await context.close()
                   await browser.close()
 
           asyncio.run(main())
