@@ -34,3 +34,5 @@ jobs:
           git add index.html
           git commit -m 'Refresh project data cache token' || exit 0
           git push
+
+# trigger: 2026-08-18T21:46+03:00
