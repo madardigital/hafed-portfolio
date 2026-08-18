@@ -1,0 +1,86 @@
+name: Update achievements research and applied projects
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-achievements-research-projects.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-sections:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply isolated section updates
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          p = Path('js/projects.js')
+          text = p.read_text(encoding='utf-8')
+
+          old_achievement = '  {id:"achievement-field-training",title:"ملف إنجاز التدريب الميداني",section:"achievements",spriteCell:[2,3],galleryCells:[[2,3],[3,3],[0,4],[1,4],[2,4],[3,4]]},\n'
+          new_achievements = '''  {id:"achievement-madinah-chamber",title:"ملف إنجاز التدريب الميداني — غرفة المدينة المنورة",section:"achievements",cover:driveThumb("14fsdM9isQaNR5wVNHLVGE-4rTh1UQ7fN"),previewUrl:drivePreview("14fsdM9isQaNR5wVNHLVGE-4rTh1UQ7fN")},
+  {id:"achievement-mewa",title:"التقرير النهائي للتدريب التعاوني — وزارة البيئة والمياه والزراعة",section:"achievements",cover:driveThumb("15ZYN0i5DjNhWqRfbzwjyCC2f27GWsbGK"),previewUrl:drivePreview("15ZYN0i5DjNhWqRfbzwjyCC2f27GWsbGK")},
+  {id:"achievement-sports-excellence",title:"ملف إنجاز التدريب التعاوني — جمعية التميز الرياضي",section:"achievements",cover:driveThumb("1N-6Xp8hXZZiUphIikkOUnvomu2b1B0kG"),previewUrl:drivePreview("1N-6Xp8hXZZiUphIikkOUnvomu2b1B0kG")},
+  {id:"achievement-shuwaimis-health",title:"التقرير النهائي للتدريب التعاوني — مركز الرعاية الصحية الأولية بالشويمس",section:"achievements",cover:driveThumb("1XlyF6XfFszJb8chFtR-ncsUN5yG7NQMD"),previewUrl:drivePreview("1XlyF6XfFszJb8chFtR-ncsUN5yG7NQMD")},
+  {id:"achievement-neighborhood-centers",title:"ملف إنجاز التدريب الميداني — جمعية مراكز الأحياء بالمدينة المنورة",section:"achievements",cover:driveThumb("1gv7GfBfrpW-Xjq4QySCOqgg_zzLZo8Zl"),previewUrl:drivePreview("1gv7GfBfrpW-Xjq4QySCOqgg_zzLZo8Zl")},
+  {id:"achievement-journalism-arts-1",title:"ملف إنجاز الفنون الصحفية — نموذج 01",section:"achievements",cover:driveThumb("177FJzNWbOTWiRTsEBkzR60cSimHTizKP"),previewUrl:drivePreview("177FJzNWbOTWiRTsEBkzR60cSimHTizKP")},
+  {id:"achievement-journalism-arts-2",title:"ملف إنجاز الفنون الصحفية — نموذج 02",section:"achievements",cover:driveThumb("1at81A2FaXnyk5GZfb4d8ZmKiek-7dzWK"),previewUrl:drivePreview("1at81A2FaXnyk5GZfb4d8ZmKiek-7dzWK")},
+'''
+          assert old_achievement in text, 'Old achievements item not found; aborting to protect other sections'
+          text = text.replace(old_achievement, new_achievements, 1)
+
+          old_research = '  {id:"research-sample",title:"دراسة فقهية مقارنة — حكم خدمة المرأة لزوجها",section:"research",cover:"assets/research-winter-at-tantora.webp?v=20260815-2",imageUrls:["assets/research-winter-at-tantora.webp?v=20260815-2"]},\n'
+          new_research = '''  {id:"research-volleyball-social-skills",title:"أثر ممارسة كرة الطائرة في تنمية المهارات الاجتماعية والدافعية نحو التعلم",section:"research",cover:driveThumb("1M_1qUxsCkBMFmLiVRenKhmUW1B1E-Mf6"),previewUrl:drivePreview("1M_1qUxsCkBMFmLiVRenKhmUW1B1E-Mf6")},
+  {id:"research-tayammum-invalidators",title:"مبطلات التيمم",section:"research",cover:driveThumb("1beSoP6Gazc9GB5NmQVsx1PAy8HIBK15H"),previewUrl:drivePreview("1beSoP6Gazc9GB5NmQVsx1PAy8HIBK15H")},
+  {id:"research-mercy-islam",title:"الرحمة في الإسلام: مفهومها ومظاهرها",section:"research",cover:driveThumb("17xPoU5eJlOh-5Qv7Gc4RhtB8GKFClWjF"),previewUrl:drivePreview("17xPoU5eJlOh-5Qv7Gc4RhtB8GKFClWjF")},
+'''
+          assert old_research in text, 'Old research item not found; aborting to protect other sections'
+          text = text.replace(old_research, new_research, 1)
+
+          project_anchor = '  {id:"radiology-plan",title:"الخطة التطويرية المقترحة لقسم الأشعة",section:"client-projects",cover:driveThumb("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg"),previewUrl:drivePreview("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg")},\n'
+          applied_addition = '''  {id:"school-health-calendar",title:"التقويم الزمني لأعمال لجنة الصحة المدرسية — 1448هـ",section:"client-projects",cover:driveThumb("12LQjslnSCwqMXrNcsY0OUfI0eerH9yQN"),previewUrl:drivePreview("12LQjslnSCwqMXrNcsY0OUfI0eerH9yQN")},
+  {id:"training-needs-trainer-guide",title:"دليل المدرب — تحديد الاحتياجات التدريبية",section:"client-projects",cover:driveThumb("1yqGKaNKZ01b2at2zffR6p4M5zj1tEDsm"),previewUrl:drivePreview("1yqGKaNKZ01b2at2zffR6p4M5zj1tEDsm")},
+'''
+          assert project_anchor in text, 'Applied projects anchor not found; aborting'
+          if 'school-health-calendar' not in text:
+              text = text.replace(project_anchor, project_anchor + applied_addition, 1)
+
+          p.write_text(text, encoding='utf-8')
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          import re
+          html = re.sub(r'js/projects\.js\?v=[^"\']+', 'js/projects.js?v=20260818-sections-2', html, count=1)
+          index.write_text(html, encoding='utf-8')
+          PY
+
+      - name: Verify only requested content model changes
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          text = Path('js/projects.js').read_text(encoding='utf-8')
+          assert 'achievement-field-training' not in text
+          assert 'research-sample' not in text
+          assert text.count('section:"achievements"') == 7
+          assert text.count('section:"research"') == 3
+          assert 'school-health-calendar' in text
+          assert 'training-needs-trainer-guide' in text
+          assert text.count('Nike — Integrated Marketing Mix Analysis') == 1
+          assert text.count('ats-cv-collection') == 1
+          assert text.count('testimonials-collection') == 1
+          PY
+
+      - name: Commit requested section updates
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add js/projects.js index.html
+          git commit -m 'Replace achievements and research samples; add applied projects' || exit 0
+          git push
