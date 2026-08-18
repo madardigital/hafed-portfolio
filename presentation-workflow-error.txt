@@ -1,7 +1,0 @@
-Presentation source download failed.
-
-usage: gdown [-h] [-V] [-O OUTPUT] [-q] [--proxy PROXY] [--speed SPEED]
-             [--no-cookies] [--no-check-certificate] [--continue] [--folder]
-             [--json] [--format FORMAT] [--user-agent USER_AGENT]
-             url_or_id
-gdown: error: unrecognized arguments: --id
