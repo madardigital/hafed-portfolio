@@ -57,11 +57,21 @@ window.PORTFOLIO_PROJECTS = [
   {id:"here-world",title:"هنا العالم 2026 — حملة علاقات عامة",section:"campaigns",cover:driveThumb("1qifx2eNtu5PMYCGfR2ykAC7yqHE3qreR"),previewUrl:drivePreview("1qifx2eNtu5PMYCGfR2ykAC7yqHE3qreR")},
   {id:"media-indicators",title:"مؤشرات الأخبار الصحفية — منطقة مكة",section:"campaigns",cover:driveThumb("1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z"),previewUrl:drivePreview("1TeIuFKFqTYM0QCiBxfgSwhVo0YbG7T_Z")},
 
-  {id:"achievement-field-training",title:"ملف إنجاز التدريب الميداني",section:"achievements",spriteCell:[2,3],galleryCells:[[2,3],[3,3],[0,4],[1,4],[2,4],[3,4]]},
+  {id:"achievement-madinah-chamber",title:"ملف إنجاز التدريب الميداني — غرفة المدينة المنورة",section:"achievements",cover:driveThumb("14fsdM9isQaNR5wVNHLVGE-4rTh1UQ7fN"),previewUrl:drivePreview("14fsdM9isQaNR5wVNHLVGE-4rTh1UQ7fN")},
+  {id:"achievement-mewa",title:"تقرير التدريب التعاوني — وزارة البيئة والمياه والزراعة",section:"achievements",cover:driveThumb("15ZYN0i5DjNhWqRfbzwjyCC2f27GWsbGK"),previewUrl:drivePreview("15ZYN0i5DjNhWqRfbzwjyCC2f27GWsbGK")},
+  {id:"achievement-sports-excellence",title:"ملف إنجاز التدريب التعاوني — جمعية التميز الرياضي",section:"achievements",cover:driveThumb("1N-6Xp8hXZZiUphIikkOUnvomu2b1B0kG"),previewUrl:drivePreview("1N-6Xp8hXZZiUphIikkOUnvomu2b1B0kG")},
+  {id:"achievement-shuwaimis",title:"التقرير النهائي للتدريب — مركز الرعاية الصحية الأولية بالشويمس",section:"achievements",cover:driveThumb("1XlyF6XfFszJb8chFtR-ncsUN5yG7NQMD"),previewUrl:drivePreview("1XlyF6XfFszJb8chFtR-ncsUN5yG7NQMD")},
+  {id:"achievement-mojtamaei",title:"ملف إنجاز التدريب الميداني — جمعية مراكز الأحياء بالمدينة المنورة",section:"achievements",cover:driveThumb("1gv7GfBfrpW-Xjq4QySCOqgg_zzLZo8Zl"),previewUrl:drivePreview("1gv7GfBfrpW-Xjq4QySCOqgg_zzLZo8Zl")},
+  {id:"achievement-journalism-shahad",title:"ملف إنجاز الفنون الصحفية — نموذج 01",section:"achievements",cover:driveThumb("177FJzNWbOTWiRTsEBkzR60cSimHTizKP"),previewUrl:drivePreview("177FJzNWbOTWiRTsEBkzR60cSimHTizKP")},
+  {id:"achievement-journalism-wasaif",title:"ملف إنجاز الفنون الصحفية — نموذج 02",section:"achievements",cover:driveThumb("1at81A2FaXnyk5GZfb4d8ZmKiek-7dzWK"),previewUrl:drivePreview("1at81A2FaXnyk5GZfb4d8ZmKiek-7dzWK")},
 
   {id:"radiology-plan",title:"الخطة التطويرية المقترحة لقسم الأشعة",section:"client-projects",cover:driveThumb("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg"),previewUrl:drivePreview("17mQ1Qd36mGcr3qBpgOAkRWypxX8LyXIg")},
+  {id:"school-health-calendar",title:"التقويم الزمني لأعمال لجنة الصحة المدرسية — المدينة الصحية",section:"client-projects",cover:driveThumb("12LQjslnSCwqMXrNcsY0OUfI0eerH9yQN"),previewUrl:drivePreview("12LQjslnSCwqMXrNcsY0OUfI0eerH9yQN")},
+  {id:"training-needs-guide",title:"دليل المدرب — تحديد الاحتياجات التدريبية",section:"client-projects",cover:driveThumb("1yqGKaNKZ01b2at2zffR6p4M5zj1tEDsm"),previewUrl:drivePreview("1yqGKaNKZ01b2at2zffR6p4M5zj1tEDsm")},
 
-  {id:"research-sample",title:"دراسة فقهية مقارنة — حكم خدمة المرأة لزوجها",section:"research",cover:"assets/research-winter-at-tantora.webp?v=20260815-2",imageUrls:["assets/research-winter-at-tantora.webp?v=20260815-2"]},
+  {id:"research-volleyball",title:"أثر ممارسة كرة الطائرة في تنمية المهارات الاجتماعية والدافعية نحو التعلم",section:"research",cover:driveThumb("1M_1qUxsCkBMFmLiVRenKhmUW1B1E-Mf6"),previewUrl:drivePreview("1M_1qUxsCkBMFmLiVRenKhmUW1B1E-Mf6")},
+  {id:"research-tayammum",title:"مبطلات التيمم — بحث فقهي مقارن",section:"research",cover:driveThumb("1beSoP6Gazc9GB5NmQVsx1PAy8HIBK15H"),previewUrl:drivePreview("1beSoP6Gazc9GB5NmQVsx1PAy8HIBK15H")},
+  {id:"research-mercy-islam",title:"الرحمة في الإسلام: مفهومها ومظاهرها",section:"research",cover:driveThumb("17xPoU5eJlOh-5Qv7Gc4RhtB8GKFClWjF"),previewUrl:drivePreview("17xPoU5eJlOh-5Qv7Gc4RhtB8GKFClWjF")},
 
   {id:"ats-cv-collection",title:"نماذج CV وفق نظام ATS",section:"ats-cv",spriteCell:[0,5],galleryCells:[[0,5],[1,5],[2,5],[3,5]],ctaLabel:"استعراض نماذج CV"},
 
