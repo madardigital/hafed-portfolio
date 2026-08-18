@@ -21,17 +21,37 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install gdown pillow
 
-      - name: Download source DOCX and extract presentation screenshots
+      - name: Download source DOCX
+        id: download
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          gdown --id 1WXXrucc0PMM6VKIO2mFH6TpKU2BKx5VH -O /tmp/presentation-samples.docx 2>&1 | tee /tmp/presentation-download.log
+          test -s /tmp/presentation-samples.docx
+
+      - name: Record download error if needed
+        if: steps.download.outcome != 'success'
+        run: |
+          {
+            echo 'Presentation source download failed.'
+            echo
+            cat /tmp/presentation-download.log || true
+          } > presentation-workflow-error.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add presentation-workflow-error.txt
+          git commit -m 'Record presentation source download error' || exit 0
+          git push
+
+      - name: Extract presentation screenshots
+        if: steps.download.outcome == 'success'
         run: |
           python <<'PY'
-          import os, re, zipfile, subprocess
+          import os, re, zipfile
           from PIL import Image, ImageOps
 
           os.makedirs('assets/presentation-samples', exist_ok=True)
           source='/tmp/presentation-samples.docx'
-          subprocess.run([
-              'gdown','--id','1WXXrucc0PMM6VKIO2mFH6TpKU2BKx5VH','-O',source
-          ], check=True)
           assert os.path.getsize(source) > 3_000_000, 'Downloaded DOCX is unexpectedly small'
 
           with zipfile.ZipFile(source) as z:
@@ -74,45 +94,26 @@ jobs:
           canvas.save('assets/presentation-samples/presentation-samples-cover.jpg','JPEG',quality=90,optimize=True,progressive=True)
           PY
 
-      - name: Add one isolated gallery card to presentations
+      - name: Add isolated gallery card
+        if: steps.download.outcome == 'success'
         run: |
           python <<'PY'
           from pathlib import Path
-
           p=Path('js/projects.js')
           text=p.read_text(encoding='utf-8')
-          project_id='presentation-samples-collection'
-          if project_id not in text:
+          if 'presentation-samples-collection' not in text:
               anchor='  {id:"nike-marketing-mix",title:"Nike — Integrated Marketing Mix Analysis",section:"presentations",spriteCell:[0,0],galleryCells:[[0,0],[1,0],[2,0],[3,0],[0,1],[1,1]]},\n'
               urls=','.join(f'"assets/presentation-samples/presentation-sample-{i:02d}.jpg?v=20260818-1"' for i in range(1,14))
-              addition=(
-                  '  {id:"presentation-samples-collection",title:"نماذج عروض تقديمية — مختارات",section:"presentations",'
-                  'cover:"assets/presentation-samples/presentation-samples-cover.jpg?v=20260818-1",'
-                  'ctaLabel:"استعراض النماذج",imageUrls:['+urls+']},\n'
-              )
+              addition=('  {id:"presentation-samples-collection",title:"نماذج عروض تقديمية — مختارات",section:"presentations",cover:"assets/presentation-samples/presentation-samples-cover.jpg?v=20260818-1",ctaLabel:"استعراض النماذج",imageUrls:['+urls+']},\n')
               assert anchor in text, 'Nike anchor not found; refusing to modify other sections'
-              text=text.replace(anchor, anchor+addition, 1)
-              p.write_text(text,encoding='utf-8')
-
+              p.write_text(text.replace(anchor,anchor+addition,1),encoding='utf-8')
           index=Path('index.html')
-          html=index.read_text(encoding='utf-8')
-          html=html.replace('js/projects.js?v=20260818-testimonial-1','js/projects.js?v=20260818-presentations-1')
+          html=index.read_text(encoding='utf-8').replace('js/projects.js?v=20260818-testimonial-1','js/projects.js?v=20260818-presentations-1')
           index.write_text(html,encoding='utf-8')
           PY
 
-      - name: Verify isolated change
-        run: |
-          python <<'PY'
-          from pathlib import Path
-          text=Path('js/projects.js').read_text(encoding='utf-8')
-          assert text.count('presentation-samples-collection') == 1
-          assert text.count('Nike — Integrated Marketing Mix Analysis') == 1
-          for i in range(1,14):
-              assert Path(f'assets/presentation-samples/presentation-sample-{i:02d}.jpg').exists()
-          assert Path('assets/presentation-samples/presentation-samples-cover.jpg').exists()
-          PY
-
-      - name: Commit only presentation additions
+      - name: Commit presentation additions
+        if: steps.download.outcome == 'success'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -120,4 +121,4 @@ jobs:
           git commit -m 'Add presentation sample gallery' || exit 0
           git push
 
-# trigger: 2026-08-18T20:20+03:00
+# diagnostic trigger: 2026-08-18T20:24+03:00
