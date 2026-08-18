@@ -20,6 +20,7 @@ jobs:
         run: |
           python <<'PY'
           from pathlib import Path
+          import re
 
           p = Path('js/projects.js')
           text = p.read_text(encoding='utf-8')
@@ -56,7 +57,6 @@ jobs:
 
           index = Path('index.html')
           html = index.read_text(encoding='utf-8')
-          import re
           html = re.sub(r'js/projects\.js\?v=[^"\']+', 'js/projects.js?v=20260818-sections-2', html, count=1)
           index.write_text(html, encoding='utf-8')
           PY
@@ -84,3 +84,5 @@ jobs:
           git add js/projects.js index.html
           git commit -m 'Replace achievements and research samples; add applied projects' || exit 0
           git push
+
+# trigger: 2026-08-18T21:44+03:00
