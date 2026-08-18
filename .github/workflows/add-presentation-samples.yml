@@ -26,7 +26,7 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          gdown --id 1WXXrucc0PMM6VKIO2mFH6TpKU2BKx5VH -O /tmp/presentation-samples.docx 2>&1 | tee /tmp/presentation-download.log
+          gdown 1WXXrucc0PMM6VKIO2mFH6TpKU2BKx5VH -O /tmp/presentation-samples.docx 2>&1 | tee /tmp/presentation-download.log
           test -s /tmp/presentation-samples.docx
 
       - name: Record download error if needed
@@ -117,8 +117,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/presentation-samples js/projects.js index.html
+          rm -f presentation-workflow-error.txt
+          git add -A presentation-workflow-error.txt assets/presentation-samples js/projects.js index.html
           git commit -m 'Add presentation sample gallery' || exit 0
           git push
 
-# diagnostic trigger: 2026-08-18T20:24+03:00
+# fixed download trigger: 2026-08-18T20:29+03:00
