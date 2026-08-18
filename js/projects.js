@@ -82,7 +82,7 @@ window.PORTFOLIO_PROJECTS = [
   {id:"motion-video",title:"موشن جرافيك — ضريبة القيمة المضافة",section:"visual-design",subcategory:"motion",cover:driveThumb("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F"),previewUrl:drivePreview("15FfACqcyg_f6yWgrHYfeAtJ3-pGP0a0F")},
   {id:"motion-intro",title:"موشن جرافيك تعريفي",section:"visual-design",subcategory:"motion",cover:driveThumb("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5"),previewUrl:drivePreview("1xK-_1545tdOZsb-29TUTuG6cK7FXzQe5")},
 
-  {id:"testimonials-collection",title:"ردود العملاء — مختارات",section:"testimonials",ctaLabel:"استعراض الردود",coverKind:"feedback",galleryRects:[
+  {id:"testimonials-collection",title:"ردود العملاء — مختارات",section:"testimonials",ctaLabel:"استعراض الردود",cover:"assets/testimonials-cover.jpg?v=20260818-1",galleryRects:[
     [0,12700,800,1100],[800,12700,800,1100],[1600,12700,800,1100],[2400,12700,800,1100],
     [0,13800,800,1100],[800,13800,800,1100],[1600,13800,800,1100],[2400,13800,800,1100],
     [0,14900,800,1100],[800,14900,800,1100],[1600,14900,800,1100],[2400,14900,800,1100],
