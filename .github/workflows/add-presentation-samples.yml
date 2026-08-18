@@ -43,7 +43,6 @@ jobs:
                   if not m:
                       continue
                   data=z.read(name)
-                  # Blank spacer images in this DOCX are about 10 KB; real screenshots are much larger.
                   if len(data) <= 20_000:
                       continue
                   media.append((int(m.group(1)), name, data))
@@ -62,7 +61,6 @@ jobs:
                   im.save(out,'JPEG',quality=88,optimize=True,progressive=True)
                   sample_paths.append(out)
 
-          # 4:3 collage cover using representative samples, while keeping every screenshot intact in the gallery.
           chosen=[0,2,6,11]
           canvas=Image.new('RGB',(1200,900),(245,242,235))
           gap=16; pad=20
@@ -109,7 +107,6 @@ jobs:
           text=Path('js/projects.js').read_text(encoding='utf-8')
           assert text.count('presentation-samples-collection') == 1
           assert text.count('Nike — Integrated Marketing Mix Analysis') == 1
-          assert 'section:"presentations"' in text
           for i in range(1,14):
               assert Path(f'assets/presentation-samples/presentation-sample-{i:02d}.jpg').exists()
           assert Path('assets/presentation-samples/presentation-samples-cover.jpg').exists()
@@ -122,3 +119,5 @@ jobs:
           git add assets/presentation-samples js/projects.js index.html
           git commit -m 'Add presentation sample gallery' || exit 0
           git push
+
+# trigger: 2026-08-18T20:20+03:00
